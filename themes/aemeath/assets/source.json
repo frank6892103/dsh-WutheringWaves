@@ -1,0 +1,23 @@
+{
+  "retrievedAt": "2026-08-15",
+  "sourcePage": "https://wiki.kurobbs.com/mc/item/1457744312692867072",
+  "publisher": "库洛游戏 / 库街区鸣潮官方 WIKI",
+  "usage": "Non-commercial local fan-made UI theme",
+  "assets": [
+    {
+      "file": "aemeath-poster.png",
+      "role": "viewport background",
+      "url": "https://prod-alicdn-community.kurobbs.com/forum/79842a0777fc4aceb3528d196260f9c020260205.png"
+    },
+    {
+      "file": "aemeath-portrait.png",
+      "role": "transparent character overlay",
+      "url": "https://prod-alicdn-community.kurobbs.com/forum/dbecc24a507441428f583e36b03e329f20260105.png"
+    },
+    {
+      "file": "aemeath-wiki-background.png",
+      "role": "panel texture",
+      "url": "https://prod-alicdn-community.kurobbs.com/forum/843f885dd3294dca91041d87effa534420260105.png"
+    }
+  ]
+}

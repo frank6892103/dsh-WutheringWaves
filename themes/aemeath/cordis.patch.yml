@@ -1,0 +1,3 @@
+- insert:
+    - id: ui-skin-wuthering-aemeath
+      name: '@dsh-external/dsh-client-ui-skin-wuthering-aemeath'

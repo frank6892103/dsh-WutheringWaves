@@ -1,0 +1,18 @@
+{
+  "$schema": "https://local.dsh/skin.schema.json",
+  "id": "wuthering-aemeath",
+  "name": "鸣潮 · 爱弥斯",
+  "nameEn": "Wuthering Waves · Aemeath",
+  "description": "以星海、长航与电子幽灵为视觉意象的爱弥斯主题。",
+  "author": "dsh-WutheringWaves contributors",
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+  "bodyAttr": "data-dsh-skin-aemeath",
+  "order": 10,
+  "accent": {
+    "primary": "#73dcff",
+    "secondary": "#ff94c8",
+    "gold": "#f1d49a"
+  },
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": true
+}

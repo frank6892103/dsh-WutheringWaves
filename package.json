@@ -1,0 +1,14 @@
+{
+  "name": "dsh-wutheringwaves",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local DeepSeek Harness Web launcher",
+  "scripts": {
+    "web": "dsh web",
+    "theme:aemeath:build": "node themes/aemeath/scripts/build-client.mjs",
+    "theme:aemeath:test": "node themes/aemeath/scripts/verify.mjs"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.0-rc.6"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A replaceable Aemeath theme for DeepSeek Harness Web GUI",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./skin.json": "./skin.json",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "test": "node scripts/verify.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "files": [
+    "assets",
+    "cordis.patch.yml",
+    "lib",
+    "NOTICE",
+    "README.md",
+    "skin.json"
+  ]
+}

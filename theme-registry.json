@@ -1,0 +1,15 @@
+{
+  "$schema": "./theme-registry.schema.json",
+  "schemaVersion": 1,
+  "themes": [
+    {
+      "id": "wuthering-aemeath",
+      "name": "鸣潮 · 爱弥斯",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+      "path": "themes/aemeath",
+      "bodyAttr": "data-dsh-skin-aemeath",
+      "order": 10,
+      "enabledByDefault": false
+    }
+  ]
+}
