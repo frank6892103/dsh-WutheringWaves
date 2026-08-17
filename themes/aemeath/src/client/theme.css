@@ -391,6 +391,10 @@ body[data-dsh-skin-aemeath] [class*='sidebar'],
 body[data-dsh-skin-aemeath] [class*='titlebar'],
 body[data-dsh-skin-aemeath] [class*='composer'] {
   border-color: var(--aemeath-border) !important;
+}
+
+body[data-dsh-skin-aemeath] [class*='titlebar'],
+body[data-dsh-skin-aemeath] [class*='composer'] {
   backdrop-filter: blur(20px) saturate(1.18);
 }
 

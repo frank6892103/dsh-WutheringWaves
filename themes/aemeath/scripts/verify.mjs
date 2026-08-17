@@ -11,6 +11,7 @@ const skin = JSON.parse(await readText('skin.json'));
 const sources = JSON.parse(await readText('assets/source.json'));
 const patch = await readText('cordis.patch.yml');
 const bundle = await readText('lib/client.js');
+const themeCss = await readText('src/client/theme.css');
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-aemeath';
 assert.equal(packageJson.name, expectedPackage);
@@ -26,6 +27,16 @@ assert.ok(bundle.includes('ctx.effect('));
 assert.ok(bundle.includes('observer.disconnect()'));
 assert.ok(bundle.includes("body.removeAttribute(AEMEATH_BODY_ATTR)"));
 assert.equal((bundle.match(/data:image\/png;base64,/g) ?? []).length, 3);
+
+const sidebarRules = [...themeCss.matchAll(/([^{}]*\[class\*='sidebar'\][^{}]*)\{([^{}]*)\}/g)];
+assert.ok(sidebarRules.length > 0, 'expected at least one sidebar theme rule');
+for (const [, selector, declarations] of sidebarRules) {
+  assert.doesNotMatch(
+    declarations,
+    /backdrop-filter\s*:/,
+    `${selector.trim()} must not establish a containing block for fixed overlays`,
+  );
+}
 
 for (const asset of sources.assets) {
   assert.match(asset.url, /^https:\/\/prod-alicdn-community\.kurobbs\.com\//);
