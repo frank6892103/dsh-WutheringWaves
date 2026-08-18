@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+  "version": "0.1.1",
+  "archive": "dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.1.1.tgz",
+  "size": 843586,
+  "sha256": "303084ba0eba5fd849387566e77f7449999513f4481900b2737d73d6a71d0622",
+  "testedWith": "@deepseek-ai/dsh@0.1.0-rc.6"
+}

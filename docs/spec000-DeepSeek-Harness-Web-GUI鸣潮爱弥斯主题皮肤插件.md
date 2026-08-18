@@ -249,7 +249,7 @@ dsh-WutheringWaves/
 │  ├─ build-registry.mjs
 │  └─ capture-previews.mjs
 ├─ docs/e2e/
-└─ spec000-DeepSeek-Harness-Web-GUI鸣潮爱弥斯主题皮肤插件.md
+└─ docs/spec000-DeepSeek-Harness-Web-GUI鸣潮爱弥斯主题皮肤插件.md
 ```
 
 若实现阶段确认现有 DSH 皮肤中心已经支持安全的外部动态注册，可删除 `skin-selector`，改为最小集成；在确认前不得假定该能力存在。

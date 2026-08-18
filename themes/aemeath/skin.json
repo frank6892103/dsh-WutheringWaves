@@ -1,18 +1,35 @@
 {
-  "$schema": "https://local.dsh/skin.schema.json",
+  "schemaVersion": 1,
   "id": "wuthering-aemeath",
   "name": "鸣潮 · 爱弥斯",
   "nameEn": "Wuthering Waves · Aemeath",
-  "description": "以星海、长航与电子幽灵为视觉意象的爱弥斯主题。",
   "author": "dsh-WutheringWaves contributors",
-  "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+  "tagline": "星海长航、青粉霓虹与爱弥斯角色主题",
+  "description": "以星海、长航与电子幽灵为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗自适应的爱弥斯主题。",
+  "tags": [
+    "fanwork",
+    "wuthering-waves",
+    "aemeath",
+    "star-voyage",
+    "glass"
+  ],
+  "accent": "#73dcff",
   "bodyAttr": "data-dsh-skin-aemeath",
-  "order": 10,
-  "accent": {
-    "primary": "#73dcff",
-    "secondary": "#ff94c8",
-    "gold": "#f1d49a"
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+  "wiring": {
+    "id": "ui-skin-wuthering-aemeath",
+    "bundleWired": true
   },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 10,
   "appearance": ["light", "dark"],
-  "assetsEmbedded": true
+  "assetsEmbedded": false
 }

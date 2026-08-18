@@ -1,0 +1,16 @@
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@dsh-external/dsh-client-ui-skin-wuthering-aemeath"
+      ]
+    }
+  },
+  "dependencies": {
+    "@dsh-external/dsh-client-ui-skin-wuthering-aemeath": "link:C:/Users/wangb/Documents/ChatGPT/dsh-WutheringWaves/themes/aemeath"
+  }
+}

@@ -6,16 +6,19 @@
   "assets": [
     {
       "file": "aemeath-poster.png",
+      "optimizedFile": "aemeath-poster.webp",
       "role": "viewport background",
       "url": "https://prod-alicdn-community.kurobbs.com/forum/79842a0777fc4aceb3528d196260f9c020260205.png"
     },
     {
       "file": "aemeath-portrait.png",
+      "optimizedFile": "aemeath-portrait.webp",
       "role": "transparent character overlay",
       "url": "https://prod-alicdn-community.kurobbs.com/forum/dbecc24a507441428f583e36b03e329f20260105.png"
     },
     {
       "file": "aemeath-wiki-background.png",
+      "optimizedFile": "aemeath-wiki-background.webp",
       "role": "panel texture",
       "url": "https://prod-alicdn-community.kurobbs.com/forum/843f885dd3294dca91041d87effa534420260105.png"
     }

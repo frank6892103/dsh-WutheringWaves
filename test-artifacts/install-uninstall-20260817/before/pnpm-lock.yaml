@@ -1,0 +1,13 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@dsh-external/dsh-client-ui-skin-wuthering-aemeath':
+        specifier: link:C:/Users/wangb/Documents/ChatGPT/dsh-WutheringWaves/themes/aemeath
+        version: link:../../../Documents/ChatGPT/dsh-WutheringWaves/themes/aemeath

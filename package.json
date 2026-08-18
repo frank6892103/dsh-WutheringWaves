@@ -6,7 +6,8 @@
   "scripts": {
     "web": "dsh web",
     "theme:aemeath:build": "node themes/aemeath/scripts/build-client.mjs",
-    "theme:aemeath:test": "node themes/aemeath/scripts/verify.mjs"
+    "theme:aemeath:test": "node themes/aemeath/scripts/verify.mjs",
+    "theme:aemeath:release": "node themes/aemeath/scripts/release.mjs"
   },
   "dependencies": {
     "@deepseek-ai/dsh": "0.1.0-rc.6"
