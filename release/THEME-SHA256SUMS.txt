@@ -1,2 +1,2 @@
-4b76a4fb82e57e635e48c48d0164dd0c376bec8e1eed9c863af1c4dc40cbf733  dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.0.tgz
-e8b493bbc0466d1a08fb6c06d4731fef4523a3ef9c8bdc2b841a60466c2669fe  dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.0.tgz
+7a65829abc60826fae5b5923ae6cb45afba3e26eb967f9cbec55402f3be71990  dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+0243b21674cc204263365bfc759749264bfb427776b6f6c9b2258854ca949e71  dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz

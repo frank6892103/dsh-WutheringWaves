@@ -160,6 +160,11 @@ function mountCantarellaTheme() {
     hudFrame.className = 'cantarella-theme__hud-frame';
     hudFrame.append(document.createElement('i'), document.createElement('i'));
     hud.append(hudFrame);
+
+    const hudBubbles = document.createElement('div');
+    hudBubbles.className = 'cantarella-theme__hud-bubbles';
+    for (let index = 0; index < 8; index += 1) hudBubbles.append(document.createElement('i'));
+    hud.append(hudBubbles);
   }
   body.append(hud);
 

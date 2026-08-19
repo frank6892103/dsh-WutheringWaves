@@ -117,7 +117,12 @@ function mountAemeathTheme() {
 
     const hudEdge = document.createElement('div');
     hudEdge.className = 'aemeath-theme__hud-edge';
-    hud.append(hudBottom, hudEdge);
+
+    const hudMotion = document.createElement('div');
+    hudMotion.className = 'aemeath-theme__hud-motion';
+    for (let index = 0; index < 6; index += 1) hudMotion.append(document.createElement('i'));
+
+    hud.append(hudBottom, hudEdge, hudMotion);
   }
   body.append(hud);
 

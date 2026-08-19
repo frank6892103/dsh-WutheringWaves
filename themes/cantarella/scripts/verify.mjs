@@ -17,7 +17,7 @@ const hostModule = await import(`${pathToFileURL(join(themeRoot, 'lib/index.js')
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-cantarella';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.3.0');
+assert.equal(packageJson.version, '0.3.1');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
@@ -113,6 +113,15 @@ assert.match(themeCss, /animation: none !important/);
 assert.match(themeRuntime, /fullEffects \? 5 : 2/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*cantarella-theme__bubbles/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*cantarella-theme__glints/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*cantarella-theme__hud-bubbles/);
+assert.match(themeCss, /data-dsh-wuthering-performance='full'[^{}]*\.cantarella-theme__hud::before/);
+assert.match(themeCss, /@keyframes cantarella-hud-scan/);
+assert.match(themeCss, /\.cantarella-theme__hud-bubbles i[\s\S]*animation: cantarella-hud-bubble/);
+assert.match(
+  themeCss,
+  /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.cantarella-theme__hud-bubbles i/,
+  'the visible full-effects layer must respect reduced motion',
+);
 for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
   assert.match(selector, /data-dsh-wuthering-performance='full'/, `economy mode must skip relational selector: ${selector.trim()}`);
 }

@@ -83,6 +83,7 @@ body[data-dsh-skin-aemeath] > #root,
 body[data-dsh-skin-aemeath] > [id*='root'] {
   position: relative;
   z-index: 1;
+  background: transparent !important;
 }
 
 .aemeath-theme__scene {
@@ -393,6 +394,20 @@ body[data-ds-dark-theme] .aemeath-theme__brand span {
   letter-spacing: 0.14em;
 }
 
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__hud::before {
+  position: absolute;
+  z-index: 0;
+  top: 74px;
+  left: 0;
+  width: clamp(180px, 30vw, 460px);
+  height: 2px;
+  content: '';
+  background: linear-gradient(90deg, transparent, rgba(102, 236, 255, .3), #d8fbff 56%, rgba(255, 105, 197, .76) 72%, transparent);
+  filter: drop-shadow(0 0 7px rgba(73, 224, 255, .8));
+  opacity: 0;
+  animation: aemeath-hud-scan 4.8s cubic-bezier(.42, 0, .24, 1) infinite;
+}
+
 .aemeath-theme__hud-top,
 .aemeath-theme__hud-bottom {
   position: absolute;
@@ -425,12 +440,12 @@ body[data-ds-dark-theme] .aemeath-theme__brand span {
 }
 
 .aemeath-theme__hud-bottom i {
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #64ecff;
-  box-shadow: 0 0 7px #64ecff, 0 0 16px #00c8ff;
-  animation: aemeath-signal 1.5s ease-in-out infinite;
+  box-shadow: 0 0 9px #64ecff, 0 0 24px #00c8ff, 0 0 38px rgba(255, 91, 190, .45);
+  animation: aemeath-signal 1s ease-in-out infinite;
 }
 
 .aemeath-theme__hud-edge {
@@ -440,6 +455,71 @@ body[data-ds-dark-theme] .aemeath-theme__brand span {
   border-top-color: rgba(95, 231, 255, 0.18);
   border-bottom-color: rgba(255, 104, 195, 0.12);
   clip-path: polygon(0 0, 19% 0, 19% 1px, 81% 1px, 81% 0, 100% 0, 100% 100%, 82% 100%, 82% calc(100% - 1px), 18% calc(100% - 1px), 18% 100%, 0 100%);
+}
+
+.aemeath-theme__hud-edge::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 96px;
+  height: 2px;
+  content: '';
+  background: linear-gradient(90deg, transparent, #86f2ff 45%, #ff82cb 68%, transparent);
+  box-shadow: 0 0 12px rgba(89, 232, 255, .86);
+  animation: aemeath-edge-run 3.6s linear infinite;
+}
+
+.aemeath-theme__hud-motion {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.aemeath-theme__hud-motion i {
+  position: absolute;
+  bottom: -18px;
+  left: 12%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d8fbff;
+  box-shadow: 0 0 8px #69eaff, 0 0 22px rgba(0, 200, 255, .78);
+  opacity: 0;
+  animation: aemeath-mote 6.2s linear infinite;
+}
+
+.aemeath-theme__hud-motion i:nth-child(2) { left: 28%; width: 3px; height: 3px; animation-delay: -4.7s; animation-duration: 8.1s; }
+.aemeath-theme__hud-motion i:nth-child(3) { left: 46%; animation-delay: -2.4s; animation-duration: 7.2s; }
+.aemeath-theme__hud-motion i:nth-child(4) { left: 64%; width: 4px; height: 4px; background: #ff9bd4; box-shadow: 0 0 8px #ff72c6, 0 0 22px rgba(255, 78, 174, .68); animation-delay: -5.5s; animation-duration: 8.8s; }
+.aemeath-theme__hud-motion i:nth-child(5) { left: 79%; width: 3px; height: 3px; animation-delay: -1.2s; animation-duration: 6.8s; }
+.aemeath-theme__hud-motion i:nth-child(6) { left: 91%; background: #ff9bd4; box-shadow: 0 0 8px #ff72c6, 0 0 22px rgba(255, 78, 174, .68); animation-delay: -3.8s; animation-duration: 7.7s; }
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__aurora {
+  opacity: .86;
+}
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit {
+  opacity: .94;
+  filter: drop-shadow(0 0 12px rgba(42, 217, 255, .24));
+}
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit-ring {
+  border-width: 1.5px;
+  animation-duration: 10s;
+}
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit-ring--2 { animation-duration: 7.5s; }
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit-ring--3 { animation-duration: 13.5s; }
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit-ring::before,
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__orbit-ring::after {
+  width: 12px;
+  height: 12px;
+}
+
+html[data-dsh-wuthering-performance='full'] .aemeath-theme__grid {
+  opacity: .78;
 }
 
 body[data-dsh-skin-aemeath] [class*='sidebar'],
@@ -597,6 +677,25 @@ body[data-dsh-skin-aemeath] ::selection {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes aemeath-hud-scan {
+  0%, 8% { transform: translateX(-36vw); opacity: 0; }
+  18%, 58% { opacity: .86; }
+  76%, 100% { transform: translateX(136vw); opacity: 0; }
+}
+
+@keyframes aemeath-edge-run {
+  from { transform: translateX(-110px); opacity: .18; }
+  18%, 82% { opacity: .9; }
+  to { transform: translateX(calc(100vw - 110px)); opacity: .18; }
+}
+
+@keyframes aemeath-mote {
+  0% { transform: translate3d(0, 0, 0) scale(.7); opacity: 0; }
+  12% { opacity: .82; }
+  78% { opacity: .58; }
+  100% { transform: translate3d(34px, -108vh, 0) scale(1.18); opacity: 0; }
+}
+
 @media (max-width: 900px) {
   .aemeath-theme__portrait {
     right: -20vw;
@@ -679,6 +778,9 @@ body[data-dsh-skin-aemeath] ::selection {
   .aemeath-theme__scene::before,
   .aemeath-theme__scene::after,
   .aemeath-theme__hud-bottom i,
+  .aemeath-theme__hud::before,
+  .aemeath-theme__hud-edge::before,
+  .aemeath-theme__hud-motion i,
   html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']),
   html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
     animation: none;

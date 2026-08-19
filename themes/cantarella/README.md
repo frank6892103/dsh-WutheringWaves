@@ -32,7 +32,7 @@ node scripts/verify.mjs
 ## 安装
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.0.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
 dsh --profile web --dump-config
 dsh web
 ```

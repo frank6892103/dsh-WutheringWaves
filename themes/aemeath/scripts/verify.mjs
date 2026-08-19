@@ -20,7 +20,7 @@ const hostModule = await import(hostModuleUrl);
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-aemeath';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.3.0');
+assert.equal(packageJson.version, '0.3.1');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
@@ -134,6 +134,20 @@ assert.match(themeCss, /animation: none !important/);
 assert.match(themeRuntime, /fullEffects \? 3 : 1/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*aemeath-theme__panel-texture/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*aemeath-theme__grid/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*aemeath-theme__hud-motion/);
+assert.match(
+  themeCss,
+  /body\[data-dsh-skin-aemeath\] > #root,[\s\S]*?background: transparent !important;/,
+  'the app root must not cover the animated scene',
+);
+assert.match(themeCss, /data-dsh-wuthering-performance='full'[^{}]*\.aemeath-theme__hud::before/);
+assert.match(themeCss, /@keyframes aemeath-hud-scan/);
+assert.match(themeCss, /\.aemeath-theme__hud-motion i[\s\S]*animation: aemeath-mote/);
+assert.match(
+  themeCss,
+  /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.aemeath-theme__hud-motion i/,
+  'the visible full-effects layer must respect reduced motion',
+);
 for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
   assert.match(selector, /data-dsh-wuthering-performance='full'/, `economy mode must skip relational selector: ${selector.trim()}`);
 }

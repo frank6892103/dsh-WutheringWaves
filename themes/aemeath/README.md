@@ -39,7 +39,7 @@ pnpm run theme:aemeath:release
 命令会重建并校验主题，然后在 `release/` 生成 `.tgz`、`SHA256SUMS.txt`、`release.json` 和接收方安装说明 `INSTALL.md`。接收方在这些文件所在目录执行：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.0.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
 dsh --profile web --dump-config
 dsh web
 ```
