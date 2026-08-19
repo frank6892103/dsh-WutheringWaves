@@ -1,0 +1,15 @@
+{
+  "retrievedAt": "2026-08-18",
+  "researchPage": "https://wuwa.incin.net/resonators/1607",
+  "officialReference": "https://www.youtube.com/watch?v=UcBPzBWCNW8",
+  "publisher": "Wuthering Waves DB asset mirror; underlying character and artwork by Kuro Games",
+  "usage": "Non-commercial local fan-made UI theme",
+  "assets": [
+    {
+      "file": "cantarella-portrait.webp",
+      "optimizedFile": "cantarella-portrait.webp",
+      "role": "transparent character overlay and selector preview",
+      "url": "https://wuwa.incin.net/Game/Aki/UI/UIResources/Common/Image/IconRolePile/T_IconRole_Pile_kanteleila_UI.webp"
+    }
+  ]
+}

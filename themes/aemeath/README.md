@@ -1,6 +1,6 @@
 # 鸣潮 · 爱弥斯
 
-DeepSeek Harness Web GUI 的独立客户端皮肤包。
+DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 
 > 非官方、非商业的本地玩家主题。原创代码使用 MIT 许可；角色与美术素材不在 MIT 许可范围内，详见 `NOTICE`。
 
@@ -12,9 +12,11 @@ DeepSeek Harness Web GUI 的独立客户端皮肤包。
 - 图片预压缩为 WebP，由插件自己的本地路由并行加载，运行时不访问官方 CDN。
 - 图片 URL 带内容哈希并使用长期缓存，刷新页面时可直接复用浏览器缓存。
 
-## 可替换性
+## 多主题切换
 
-该主题只通过 `data-dsh-skin-aemeath` 作用域生效。DSH 停用或移除插件时，注册的 effect 会清除主题节点、样式、标题和浏览器主题色。后续主题可按相同包结构添加到仓库根目录的 `theme-registry.json`。
+安装后，本主题会向页面右下角的“主题中心”注册，不再自动覆盖官方外观。多个角色主题可同时安装，但任一时刻只会挂载一个。选择会保存在浏览器 `localStorage`，且可以通过 `window.__DSH_WUTHERING_THEME_HUB__.setActive('wuthering-aemeath')` 程序化切换。
+
+该主题只通过 `data-dsh-skin-aemeath` 作用域生效。切回官方外观、换用其他主题，或 DSH 停用/移除插件时，清理器会撤回主题节点、样式、标题和浏览器主题色。
 
 ## 构建与校验
 
@@ -36,7 +38,7 @@ pnpm run theme:aemeath:release
 命令会重建并校验主题，然后在 `release/` 生成 `.tgz`、`SHA256SUMS.txt`、`release.json` 和接收方安装说明 `INSTALL.md`。接收方在这些文件所在目录执行：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.1.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.2.1.tgz
 dsh --profile web --dump-config
 dsh web
 ```

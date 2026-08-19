@@ -1,6 +1,13 @@
 {
   "$schema": "./theme-registry.schema.json",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "selector": {
+    "officialThemeId": "official",
+    "storageKey": "dsh.wuthering-waves.active-theme.v1",
+    "persistence": "local-storage-with-cookie-fallback",
+    "globalApi": "__DSH_WUTHERING_THEME_HUB__",
+    "activation": "exclusive"
+  },
   "themes": [
     {
       "id": "wuthering-aemeath",
@@ -9,6 +16,15 @@
       "path": "themes/aemeath",
       "bodyAttr": "data-dsh-skin-aemeath",
       "order": 10,
+      "enabledByDefault": false
+    },
+    {
+      "id": "wuthering-cantarella",
+      "name": "鸣潮 · 坎特蕾拉",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-cantarella",
+      "path": "themes/cantarella",
+      "bodyAttr": "data-dsh-skin-cantarella",
+      "order": 20,
       "enabledByDefault": false
     }
   ]

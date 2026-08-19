@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "wuthering-cantarella",
+  "name": "鸣潮 · 坎特蕾拉",
+  "nameEn": "Wuthering Waves · Cantarella",
+  "author": "dsh-WutheringWaves contributors",
+  "tagline": "深海幻梦、水母微光与紫蓝潮汐",
+  "description": "以海中梦、幻象与水母为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗自适应的坎特蕾拉主题。",
+  "tags": [
+    "fanwork",
+    "wuthering-waves",
+    "cantarella",
+    "abyssal-dream",
+    "jellyfish"
+  ],
+  "accent": "#a99cff",
+  "bodyAttr": "data-dsh-skin-cantarella",
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-cantarella",
+  "wiring": {
+    "id": "ui-skin-wuthering-cantarella",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 20,
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": false
+}

@@ -1,8 +1,8 @@
 {
   "name": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "private": true,
-  "description": "A replaceable Aemeath theme for DeepSeek Harness Web GUI",
+  "description": "A switchable Aemeath theme for DeepSeek Harness Web GUI",
   "keywords": [
     "deepseek-harness",
     "dsh-plugin",

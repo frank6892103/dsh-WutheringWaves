@@ -9,10 +9,10 @@ function createAemeathOwnedElement(tagName, className) {
   return element;
 }
 
-function apply(ctx) {
+function mountAemeathTheme() {
   const body = document.body;
   const head = document.head;
-  if (!body || !head) return;
+  if (!body || !head) throw new Error('Aemeath theme requires document.body and document.head');
 
   document
     .querySelectorAll(`[${AEMEATH_OWNER_ATTR}="${AEMEATH_PLUGIN_ID}"]`)
@@ -128,29 +128,42 @@ function apply(ctx) {
     attributeFilter: ['data-ds-dark-theme'],
   });
 
+  return () => {
+    observer.disconnect();
+    document
+      .querySelectorAll(`[${AEMEATH_OWNER_ATTR}="${AEMEATH_PLUGIN_ID}"]`)
+      .forEach((node) => node.remove());
+
+    if (previousBodyAttr === null) {
+      body.removeAttribute(AEMEATH_BODY_ATTR);
+    } else {
+      body.setAttribute(AEMEATH_BODY_ATTR, previousBodyAttr);
+    }
+
+    document.title = previousTitle;
+    if (themeColorWasCreated) {
+      themeColor.remove();
+    } else if (previousThemeColor === null) {
+      themeColor.removeAttribute('content');
+    } else {
+      themeColor.setAttribute('content', previousThemeColor);
+    }
+  };
+}
+
+function apply(ctx) {
+  const hub = getWutheringThemeHub();
   ctx.effect(
-    () => () => {
-      observer.disconnect();
-      document
-        .querySelectorAll(`[${AEMEATH_OWNER_ATTR}="${AEMEATH_PLUGIN_ID}"]`)
-        .forEach((node) => node.remove());
-
-      if (previousBodyAttr === null) {
-        body.removeAttribute(AEMEATH_BODY_ATTR);
-      } else {
-        body.setAttribute(AEMEATH_BODY_ATTR, previousBodyAttr);
-      }
-
-      document.title = previousTitle;
-      if (themeColorWasCreated) {
-        themeColor.remove();
-      } else if (previousThemeColor === null) {
-        themeColor.removeAttribute('content');
-      } else {
-        themeColor.setAttribute('content', previousThemeColor);
-      }
-    },
-    'Clean up the Wuthering Waves Aemeath skin',
+    () => hub.register({
+      id: 'wuthering-aemeath',
+      name: '鸣潮 · 爱弥斯',
+      tagline: '星海长航、青粉霓虹与电子幽灵',
+      accent: '#73dcff',
+      order: 10,
+      previewUrl: AEMEATH_ASSET_POSTER,
+      mount: mountAemeathTheme,
+    }),
+    'Register the Wuthering Waves Aemeath skin with the theme hub',
   );
 }
 

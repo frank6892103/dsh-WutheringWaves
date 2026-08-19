@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "mode": "coinstallable-exclusive-selection",
+  "selector": {
+    "globalApi": "__DSH_WUTHERING_THEME_HUB__",
+    "officialThemeId": "official",
+    "persistence": "local-storage-with-cookie-fallback"
+  },
+  "testedWith": "@deepseek-ai/dsh@0.1.0-rc.6",
+  "themes": [
+    {
+      "id": "wuthering-aemeath",
+      "name": "鸣潮 · 爱弥斯",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
+      "version": "0.2.1",
+      "archive": "dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.2.1.tgz",
+      "size": 848008,
+      "sha256": "2cab0d70a94934942828a7545150df2b78555ad293b672b2a770f1935a342908"
+    },
+    {
+      "id": "wuthering-cantarella",
+      "name": "鸣潮 · 坎特蕾拉",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-cantarella",
+      "version": "0.2.0",
+      "archive": "dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.2.0.tgz",
+      "size": 277072,
+      "sha256": "5c3db81fa624b3a47698349b04681a5515a7282ce5fb3c17dd812dcf41659040"
+    }
+  ]
+}

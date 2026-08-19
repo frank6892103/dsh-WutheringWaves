@@ -3,9 +3,21 @@
   "$id": "https://local.dsh/themes/theme-registry.schema.json",
   "title": "DSH Wuthering Waves theme registry",
   "type": "object",
-  "required": ["schemaVersion", "themes"],
+  "required": ["schemaVersion", "selector", "themes"],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
+    "selector": {
+      "type": "object",
+      "required": ["officialThemeId", "storageKey", "persistence", "globalApi", "activation"],
+      "properties": {
+        "officialThemeId": { "const": "official" },
+        "storageKey": { "type": "string", "minLength": 1 },
+        "persistence": { "const": "local-storage-with-cookie-fallback" },
+        "globalApi": { "type": "string", "pattern": "^__[A-Z0-9_]+__$" },
+        "activation": { "const": "exclusive" }
+      },
+      "additionalProperties": false
+    },
     "themes": {
       "type": "array",
       "items": {

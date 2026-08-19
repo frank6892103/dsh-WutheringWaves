@@ -1,13 +1,19 @@
 {
   "name": "dsh-wutheringwaves",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "Local DeepSeek Harness Web launcher",
+  "description": "Switchable Wuthering Waves themes for DeepSeek Harness Web",
   "scripts": {
     "web": "dsh web",
     "theme:aemeath:build": "node themes/aemeath/scripts/build-client.mjs",
     "theme:aemeath:test": "node themes/aemeath/scripts/verify.mjs",
-    "theme:aemeath:release": "node themes/aemeath/scripts/release.mjs"
+    "theme:aemeath:release": "node themes/aemeath/scripts/release.mjs",
+    "theme:cantarella:build": "node themes/cantarella/scripts/build-client.mjs",
+    "theme:cantarella:test": "node themes/cantarella/scripts/verify.mjs",
+    "theme:cantarella:release": "node themes/cantarella/scripts/release.mjs",
+    "themes:build": "pnpm run theme:aemeath:build && pnpm run theme:cantarella:build",
+    "themes:test": "node scripts/verify-registry.mjs && node scripts/verify-theme-hub.mjs && pnpm run theme:aemeath:test && pnpm run theme:cantarella:test",
+    "themes:release": "node scripts/release-themes.mjs"
   },
   "dependencies": {
     "@deepseek-ai/dsh": "0.1.0-rc.6"
