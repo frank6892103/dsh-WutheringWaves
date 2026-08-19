@@ -12,6 +12,7 @@ DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 - DSH 会话区采用分层半透明深海玻璃，叠加低频焦散、流光、星芒和波形动效。
 - 适配 DSH 明暗模式、窄屏和 `prefers-reduced-motion`。
 - 运行时仅从插件本地路由加载 WebP，不请求外部 CDN。
+- 默认“省资源”模式保留人物、深海配色、静态焦散和两只水母，但不创建气泡、星芒、折射、潮流、波形等持续动画层；可在主题中心恢复完整效果。
 
 ## 切换
 
@@ -31,7 +32,7 @@ node scripts/verify.mjs
 ## 安装
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.2.0.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.0.tgz
 dsh --profile web --dump-config
 dsh web
 ```

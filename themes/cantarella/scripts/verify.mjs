@@ -12,11 +12,12 @@ const patch = await readText('cordis.patch.yml');
 const bundle = await readText('lib/client.js');
 const hostEntry = await readText('lib/index.js');
 const themeCss = await readText('src/client/theme.css');
+const themeRuntime = await readText('src/client/runtime.js');
 const hostModule = await import(`${pathToFileURL(join(themeRoot, 'lib/index.js')).href}?verify=${Date.now()}`);
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-cantarella';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.2.0');
+assert.equal(packageJson.version, '0.3.0');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
@@ -106,6 +107,15 @@ assert.match(themeCss, /@keyframes cantarella-sheen/);
 assert.match(themeCss, /@keyframes cantarella-glint/);
 assert.match(themeCss, /@keyframes cantarella-sonar/);
 assert.match(themeCss, /prefers-reduced-motion: reduce/);
+assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
+assert.match(themeCss, /contain: strict/);
+assert.match(themeCss, /animation: none !important/);
+assert.match(themeRuntime, /fullEffects \? 5 : 2/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*cantarella-theme__bubbles/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*cantarella-theme__glints/);
+for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
+  assert.match(selector, /data-dsh-wuthering-performance='full'/, `economy mode must skip relational selector: ${selector.trim()}`);
+}
 
 const portrait = await readFile(join(themeRoot, sources.assets[0].optimizedFile.replace(/^/, 'assets/')));
 assert.ok(portrait.length > 100_000);

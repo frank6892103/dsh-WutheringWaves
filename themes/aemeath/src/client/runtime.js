@@ -13,6 +13,7 @@ function mountAemeathTheme() {
   const body = document.body;
   const head = document.head;
   if (!body || !head) throw new Error('Aemeath theme requires document.body and document.head');
+  const fullEffects = document.documentElement?.getAttribute('data-dsh-wuthering-performance') === 'full';
 
   document
     .querySelectorAll(`[${AEMEATH_OWNER_ATTR}="${AEMEATH_PLUGIN_ID}"]`)
@@ -42,35 +43,39 @@ function mountAemeathTheme() {
   backdrop.style.backgroundImage = `url("${AEMEATH_ASSET_POSTER}")`;
   scene.append(backdrop);
 
-  const panelTexture = document.createElement('div');
-  panelTexture.className = 'aemeath-theme__panel-texture';
-  panelTexture.style.backgroundImage = `url("${AEMEATH_ASSET_PANEL}")`;
-  scene.append(panelTexture);
+  if (fullEffects) {
+    const panelTexture = document.createElement('div');
+    panelTexture.className = 'aemeath-theme__panel-texture';
+    panelTexture.style.backgroundImage = `url("${AEMEATH_ASSET_PANEL}")`;
+    scene.append(panelTexture);
 
-  const starlight = document.createElement('div');
-  starlight.className = 'aemeath-theme__starlight';
-  scene.append(starlight);
+    const starlight = document.createElement('div');
+    starlight.className = 'aemeath-theme__starlight';
+    scene.append(starlight);
 
-  const aurora = document.createElement('div');
-  aurora.className = 'aemeath-theme__aurora';
-  scene.append(aurora);
+    const aurora = document.createElement('div');
+    aurora.className = 'aemeath-theme__aurora';
+    scene.append(aurora);
+  }
 
   const orbit = document.createElement('div');
   orbit.className = 'aemeath-theme__orbit';
-  for (let index = 0; index < 3; index += 1) {
+  for (let index = 0; index < (fullEffects ? 3 : 1); index += 1) {
     const ring = document.createElement('i');
     ring.className = `aemeath-theme__orbit-ring aemeath-theme__orbit-ring--${index + 1}`;
     orbit.append(ring);
   }
   scene.append(orbit);
 
-  const grid = document.createElement('div');
-  grid.className = 'aemeath-theme__grid';
-  scene.append(grid);
+  if (fullEffects) {
+    const grid = document.createElement('div');
+    grid.className = 'aemeath-theme__grid';
+    scene.append(grid);
 
-  const scanlines = document.createElement('div');
-  scanlines.className = 'aemeath-theme__scanlines';
-  scene.append(scanlines);
+    const scanlines = document.createElement('div');
+    scanlines.className = 'aemeath-theme__scanlines';
+    scene.append(scanlines);
+  }
 
   const portrait = document.createElement('img');
   portrait.className = 'aemeath-theme__portrait';
@@ -101,16 +106,19 @@ function mountAemeathTheme() {
   hudValue.textContent = 'AEMEATH // 100%';
   hudTop.append(hudLabel, hudValue);
 
-  const hudBottom = document.createElement('div');
-  hudBottom.className = 'aemeath-theme__hud-bottom';
-  const hudPulse = document.createElement('i');
-  const hudText = document.createElement('span');
-  hudText.textContent = 'STAR VOYAGE · ONLINE';
-  hudBottom.append(hudPulse, hudText);
+  hud.append(hudTop);
+  if (fullEffects) {
+    const hudBottom = document.createElement('div');
+    hudBottom.className = 'aemeath-theme__hud-bottom';
+    const hudPulse = document.createElement('i');
+    const hudText = document.createElement('span');
+    hudText.textContent = 'STAR VOYAGE · ONLINE';
+    hudBottom.append(hudPulse, hudText);
 
-  const hudEdge = document.createElement('div');
-  hudEdge.className = 'aemeath-theme__hud-edge';
-  hud.append(hudTop, hudBottom, hudEdge);
+    const hudEdge = document.createElement('div');
+    hudEdge.className = 'aemeath-theme__hud-edge';
+    hud.append(hudBottom, hudEdge);
+  }
   body.append(hud);
 
   body.setAttribute(AEMEATH_BODY_ATTR, '');

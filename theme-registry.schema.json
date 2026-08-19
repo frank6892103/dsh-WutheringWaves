@@ -5,16 +5,25 @@
   "type": "object",
   "required": ["schemaVersion", "selector", "themes"],
   "properties": {
-    "schemaVersion": { "const": 2 },
+    "schemaVersion": { "const": 3 },
     "selector": {
       "type": "object",
-      "required": ["officialThemeId", "storageKey", "persistence", "globalApi", "activation"],
+      "required": ["officialThemeId", "storageKey", "persistence", "globalApi", "activation", "performanceStorageKey", "defaultPerformance", "performanceModes", "previewLoading"],
       "properties": {
         "officialThemeId": { "const": "official" },
         "storageKey": { "type": "string", "minLength": 1 },
         "persistence": { "const": "local-storage-with-cookie-fallback" },
         "globalApi": { "type": "string", "pattern": "^__[A-Z0-9_]+__$" },
-        "activation": { "const": "exclusive" }
+        "activation": { "const": "exclusive" },
+        "performanceStorageKey": { "type": "string", "minLength": 1 },
+        "defaultPerformance": { "const": "economy" },
+        "performanceModes": {
+          "type": "array",
+          "prefixItems": [{ "const": "economy" }, { "const": "full" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "previewLoading": { "const": "on-selector-open" }
       },
       "additionalProperties": false
     },

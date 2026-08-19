@@ -459,7 +459,7 @@ body[data-dsh-skin-aemeath] [class*='_sidebarCol'] {
     12px 0 34px rgba(0, 190, 255, 0.08);
 }
 
-body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']) {
   position: relative;
   border-radius: 26px;
   box-shadow:
@@ -469,7 +469,7 @@ body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你
   animation: aemeath-composer-glow 3.4s ease-in-out infinite alternate;
 }
 
-body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
   position: absolute;
   z-index: 5;
   inset: -2px;
@@ -486,7 +486,7 @@ body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你
   animation: aemeath-border-flow 3s linear infinite;
 }
 
-body[data-dsh-skin-aemeath] [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
   border: 1px solid rgba(108, 235, 255, 0.52) !important;
   background:
     linear-gradient(115deg, rgba(4, 18, 42, 0.94), rgba(11, 35, 61, 0.84) 64%, rgba(47, 17, 53, 0.78)) !important;
@@ -496,7 +496,7 @@ body[data-dsh-skin-aemeath] [class$='_card']:has(textarea[placeholder='描述你
   backdrop-filter: blur(24px) saturate(1.35);
 }
 
-body[data-dsh-skin-aemeath]:not([data-ds-dark-theme]) [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath]:not([data-ds-dark-theme]) [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
   background: linear-gradient(115deg, rgba(231, 247, 251, 0.88), rgba(204, 237, 245, 0.78) 64%, rgba(247, 213, 233, 0.74)) !important;
 }
 
@@ -679,8 +679,52 @@ body[data-dsh-skin-aemeath] ::selection {
   .aemeath-theme__scene::before,
   .aemeath-theme__scene::after,
   .aemeath-theme__hud-bottom i,
-  body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']),
-  body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
+  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']),
+  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
     animation: none;
   }
+}
+
+/* Economy is the default because cloud desktops often have constrained GPU compositing. */
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__scene {
+  contain: strict;
+  isolation: auto;
+}
+
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__scene::before,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__panel-texture,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__starlight,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__aurora,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__grid,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__scanlines,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__hud-bottom,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__hud-edge {
+  display: none;
+}
+
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__scene::after {
+  mix-blend-mode: normal;
+  opacity: .32;
+}
+
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__backdrop,
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__portrait {
+  filter: none;
+}
+
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__orbit-ring {
+  box-shadow: none;
+}
+
+html[data-dsh-wuthering-performance='economy'] [class^='aemeath-theme__'],
+html[data-dsh-wuthering-performance='economy'] [class^='aemeath-theme__']::before,
+html[data-dsh-wuthering-performance='economy'] [class^='aemeath-theme__']::after,
+html[data-dsh-wuthering-performance='economy'] [class^='aemeath-theme__'] * {
+  animation: none !important;
+}
+
+html[data-dsh-wuthering-performance='economy'] .aemeath-theme__hud-top,
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [class*='titlebar'],
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [class*='composer'] {
+  backdrop-filter: none;
 }

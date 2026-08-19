@@ -42,6 +42,9 @@ const context = vm.createContext({
 });
 vm.runInContext(`${runtime}\nglobalThis.__testHub = getWutheringThemeHub();`, context);
 const hub = context.__testHub;
+assert.equal(hub.getPerformance(), 'economy', 'cloud-friendly economy mode should be the default');
+assert.match(runtime, /preview\.dataset\.previewUrl = previewUrl/);
+assert.match(runtime, /function hydratePreviews\(\)/);
 
 let alphaMounts = 0;
 let alphaCleanups = 0;
@@ -64,15 +67,22 @@ assert.equal(hub.getActive(), 'alpha');
 assert.equal(alphaMounts, 1);
 assert.equal(stored.get(hub.storageKey), 'alpha');
 
+hub.setPerformance('full');
+assert.equal(hub.getPerformance(), 'full');
+assert.equal(stored.get(hub.performanceStorageKey), 'full');
+assert.equal(alphaCleanups, 1, 'changing the profile remounts the active theme');
+assert.equal(alphaMounts, 2, 'the remount can create the full-effects DOM');
+assert.throws(() => hub.setPerformance('turbo'), /economy.*full/);
+
 hub.setActive('broken');
 assert.equal(hub.getActive(), 'alpha', 'a failed switch must restore the previous theme');
-assert.equal(alphaCleanups, 1, 'the old theme is cleaned before switching');
-assert.equal(alphaMounts, 2, 'the old theme is remounted after the new theme fails');
+assert.equal(alphaCleanups, 2, 'the old theme is cleaned before switching');
+assert.equal(alphaMounts, 3, 'the old theme is remounted after the new theme fails');
 assert.equal(errors.length, 1, 'the failure should be reported once');
 
 hub.setActive('official');
 assert.equal(hub.getActive(), 'official');
-assert.equal(alphaCleanups, 2);
+assert.equal(alphaCleanups, 3);
 assert.equal(stored.get(hub.storageKey), 'official');
 
 unregisterBroken();

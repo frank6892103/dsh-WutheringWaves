@@ -369,8 +369,8 @@ body[data-ds-dark-theme] .cantarella-theme__portrait {
 .cantarella-theme__brand span { color: rgba(62, 55, 100, .64); font: 500 9px/1.5 ui-monospace, monospace; letter-spacing: .28em; }
 body[data-ds-dark-theme] .cantarella-theme__brand { color: rgba(230, 224, 255, .76); text-shadow: 0 0 24px rgba(150, 132, 255, .26); }
 body[data-ds-dark-theme] .cantarella-theme__brand span { color: rgba(189, 179, 229, .58); }
-body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__portrait,
-body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__brand { opacity: .12; }
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__portrait,
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__brand { opacity: .12; }
 
 .cantarella-theme__hud {
   position: fixed;
@@ -530,7 +530,7 @@ body[data-ds-dark-theme] .cantarella-theme__hud-copy span,
 body[data-ds-dark-theme] .cantarella-theme__hud-copy small { color: rgba(204, 195, 239, .54); }
 body[data-ds-dark-theme] .cantarella-theme__hud-copy strong { color: #b9adff; text-shadow: 0 0 12px rgba(159, 138, 255, .36); }
 body[data-ds-dark-theme] .cantarella-theme__hud-sonar { border-color: rgba(185, 170, 255, .46); background: radial-gradient(circle, rgba(192, 181, 255, .7) 0 2px, transparent 3px), conic-gradient(from 0deg, rgba(178, 162, 255, .04), rgba(178, 162, 255, .44), transparent 31% 100%); }
-body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__hud { opacity: .16; }
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella]:has(#root [role='dialog']) .cantarella-theme__hud { opacity: .16; }
 
 body[data-dsh-skin-cantarella] [class*='sidebar'] {
   background: linear-gradient(165deg, rgba(237, 240, 255, .5), rgba(215, 218, 245, .34)) !important;
@@ -544,9 +544,9 @@ body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='sidebar'] {
 body[data-dsh-skin-cantarella] [class*='titlebar'] { background: rgba(233, 235, 255, .32) !important; border-color: rgba(101, 91, 164, .16) !important; backdrop-filter: blur(20px) saturate(1.18); }
 body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='titlebar'] { background: rgba(14, 10, 35, .4) !important; }
 body[data-dsh-skin-cantarella] [class*='composer'],
-body[data-dsh-skin-cantarella] [class$='_root']:has(textarea) { border-color: rgba(116, 99, 191, .32) !important; background: linear-gradient(118deg, rgba(248, 248, 255, .7), rgba(229, 230, 252, .5)) !important; box-shadow: 0 12px 42px rgba(49, 39, 102, .12), inset 0 1px rgba(255,255,255,.72), 0 0 26px rgba(126, 105, 214, .08); backdrop-filter: blur(20px) saturate(1.2); }
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella] [class$='_root']:has(textarea) { border-color: rgba(116, 99, 191, .32) !important; background: linear-gradient(118deg, rgba(248, 248, 255, .7), rgba(229, 230, 252, .5)) !important; box-shadow: 0 12px 42px rgba(49, 39, 102, .12), inset 0 1px rgba(255,255,255,.72), 0 0 26px rgba(126, 105, 214, .08); backdrop-filter: blur(20px) saturate(1.2); }
 body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='composer'],
-body[data-dsh-skin-cantarella][data-ds-dark-theme] [class$='_root']:has(textarea) { background: linear-gradient(118deg, rgba(25, 17, 55, .74), rgba(45, 31, 79, .56)) !important; border-color: rgba(177, 158, 255, .28) !important; box-shadow: 0 14px 50px rgba(3, 2, 16, .38), inset 0 1px rgba(255,255,255,.09), 0 0 30px rgba(128, 105, 230, .08); }
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella][data-ds-dark-theme] [class$='_root']:has(textarea) { background: linear-gradient(118deg, rgba(25, 17, 55, .74), rgba(45, 31, 79, .56)) !important; border-color: rgba(177, 158, 255, .28) !important; box-shadow: 0 14px 50px rgba(3, 2, 16, .38), inset 0 1px rgba(255,255,255,.09), 0 0 30px rgba(128, 105, 230, .08); }
 body[data-dsh-skin-cantarella] button[aria-label='发送消息'] {
   background: linear-gradient(135deg, #7460d5, #8b79e2 54%, #738fdc) !important;
   box-shadow: 0 0 16px rgba(116, 96, 213, .34), 0 8px 22px rgba(63, 45, 132, .16);
@@ -612,4 +612,57 @@ body[data-dsh-skin-cantarella] ::selection { color: #211b43; background: rgba(17
   .cantarella-theme__hud-sonar span,
   .cantarella-theme__hud-pulse,
   .cantarella-theme__hud-wave i { animation: none; }
+}
+
+/* The default profile is intentionally static and cheap for remote/cloud desktops. */
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__scene {
+  contain: strict;
+  isolation: auto;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__scene::before,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__currents,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__refraction,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__ribbons,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__bubbles,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__glints,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-frame,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-wave {
+  display: none;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__scene::after {
+  mix-blend-mode: normal;
+  opacity: .34;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__caustics {
+  filter: none;
+  opacity: .13;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__bloom,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__portrait,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__jellyfish {
+  filter: none;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__portrait,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__brand,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud {
+  z-index: 1;
+}
+
+html[data-dsh-wuthering-performance='economy'] [class^='cantarella-theme__'],
+html[data-dsh-wuthering-performance='economy'] [class^='cantarella-theme__']::before,
+html[data-dsh-wuthering-performance='economy'] [class^='cantarella-theme__']::after,
+html[data-dsh-wuthering-performance='economy'] [class^='cantarella-theme__'] * {
+  animation: none !important;
+}
+
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-signal,
+html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-status,
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [class*='titlebar'],
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [class*='composer'] {
+  backdrop-filter: none;
 }

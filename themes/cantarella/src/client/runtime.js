@@ -13,6 +13,7 @@ function mountCantarellaTheme() {
   const body = document.body;
   const head = document.head;
   if (!body || !head) throw new Error('Cantarella theme requires document.body and document.head');
+  const fullEffects = document.documentElement?.getAttribute('data-dsh-wuthering-performance') === 'full';
 
   document
     .querySelectorAll(`[${CANTARELLA_OWNER_ATTR}="${CANTARELLA_PLUGIN_ID}"]`)
@@ -45,26 +46,30 @@ function mountCantarellaTheme() {
   caustics.className = 'cantarella-theme__caustics';
   scene.append(caustics);
 
-  const currents = document.createElement('div');
-  currents.className = 'cantarella-theme__currents';
-  scene.append(currents);
+  if (fullEffects) {
+    const currents = document.createElement('div');
+    currents.className = 'cantarella-theme__currents';
+    scene.append(currents);
+  }
 
   const bloom = document.createElement('div');
   bloom.className = 'cantarella-theme__bloom';
   scene.append(bloom);
 
-  const refraction = document.createElement('div');
-  refraction.className = 'cantarella-theme__refraction';
-  scene.append(refraction);
+  if (fullEffects) {
+    const refraction = document.createElement('div');
+    refraction.className = 'cantarella-theme__refraction';
+    scene.append(refraction);
 
-  const ribbons = document.createElement('div');
-  ribbons.className = 'cantarella-theme__ribbons';
-  ribbons.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
-  scene.append(ribbons);
+    const ribbons = document.createElement('div');
+    ribbons.className = 'cantarella-theme__ribbons';
+    ribbons.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
+    scene.append(ribbons);
+  }
 
   const jellyField = document.createElement('div');
   jellyField.className = 'cantarella-theme__jelly-field';
-  for (let index = 0; index < 5; index += 1) {
+  for (let index = 0; index < (fullEffects ? 5 : 2); index += 1) {
     const jellyfish = document.createElement('i');
     jellyfish.className = `cantarella-theme__jellyfish cantarella-theme__jellyfish--${index + 1}`;
     const tentacles = document.createElement('span');
@@ -73,22 +78,24 @@ function mountCantarellaTheme() {
   }
   scene.append(jellyField);
 
-  const bubbles = document.createElement('div');
-  bubbles.className = 'cantarella-theme__bubbles';
-  for (let index = 0; index < 12; index += 1) {
-    const bubble = document.createElement('i');
-    bubble.style.setProperty('--bubble-index', index);
-    bubble.style.setProperty('--bubble-size', `${3 + (index % 5) * 2}px`);
-    bubble.style.setProperty('--bubble-left', `${4 + index * 7.2}%`);
-    bubble.style.setProperty('--bubble-bottom', `${-5 - (index % 4) * 8}%`);
-    bubbles.append(bubble);
-  }
-  scene.append(bubbles);
+  if (fullEffects) {
+    const bubbles = document.createElement('div');
+    bubbles.className = 'cantarella-theme__bubbles';
+    for (let index = 0; index < 12; index += 1) {
+      const bubble = document.createElement('i');
+      bubble.style.setProperty('--bubble-index', index);
+      bubble.style.setProperty('--bubble-size', `${3 + (index % 5) * 2}px`);
+      bubble.style.setProperty('--bubble-left', `${4 + index * 7.2}%`);
+      bubble.style.setProperty('--bubble-bottom', `${-5 - (index % 4) * 8}%`);
+      bubbles.append(bubble);
+    }
+    scene.append(bubbles);
 
-  const glints = document.createElement('div');
-  glints.className = 'cantarella-theme__glints';
-  for (let index = 0; index < 9; index += 1) glints.append(document.createElement('i'));
-  scene.append(glints);
+    const glints = document.createElement('div');
+    glints.className = 'cantarella-theme__glints';
+    for (let index = 0; index < 9; index += 1) glints.append(document.createElement('i'));
+    scene.append(glints);
+  }
 
   const portrait = createCantarellaOwnedElement('img', 'cantarella-theme__portrait');
   portrait.src = CANTARELLA_ASSET_PORTRAIT;
@@ -116,7 +123,7 @@ function mountCantarellaTheme() {
   hudSignal.className = 'cantarella-theme__hud-signal';
   const hudSonar = document.createElement('i');
   hudSonar.className = 'cantarella-theme__hud-sonar';
-  hudSonar.append(document.createElement('span'));
+  if (fullEffects) hudSonar.append(document.createElement('span'));
   const hudSignalCopy = document.createElement('div');
   hudSignalCopy.className = 'cantarella-theme__hud-copy';
   const hudSignalLabel = document.createElement('span');
@@ -141,14 +148,19 @@ function mountCantarellaTheme() {
   hudStatusCopy.append(hudStatusLabel, hudStatusValue);
   const hudWave = document.createElement('div');
   hudWave.className = 'cantarella-theme__hud-wave';
-  for (let index = 0; index < 8; index += 1) hudWave.append(document.createElement('i'));
-  hudStatus.append(hudPulse, hudStatusCopy, hudWave);
+  if (fullEffects) {
+    for (let index = 0; index < 8; index += 1) hudWave.append(document.createElement('i'));
+  }
+  hudStatus.append(hudPulse, hudStatusCopy);
+  if (fullEffects) hudStatus.append(hudWave);
 
-  const hudFrame = document.createElement('div');
-  hudFrame.className = 'cantarella-theme__hud-frame';
-  hudFrame.append(document.createElement('i'), document.createElement('i'));
-
-  hud.append(hudSignal, hudStatus, hudFrame);
+  hud.append(hudSignal, hudStatus);
+  if (fullEffects) {
+    const hudFrame = document.createElement('div');
+    hudFrame.className = 'cantarella-theme__hud-frame';
+    hudFrame.append(document.createElement('i'), document.createElement('i'));
+    hud.append(hudFrame);
+  }
   body.append(hud);
 
   body.setAttribute(CANTARELLA_BODY_ATTR, '');

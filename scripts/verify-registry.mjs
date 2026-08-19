@@ -6,11 +6,15 @@ const repoRoot = resolve(import.meta.dirname, '..');
 const registry = JSON.parse(await readFile(join(repoRoot, 'theme-registry.json'), 'utf8'));
 const hubRuntime = await readFile(join(repoRoot, 'shared', 'theme-hub-runtime.js'), 'utf8');
 
-assert.equal(registry.schemaVersion, 2);
+assert.equal(registry.schemaVersion, 3);
 assert.equal(registry.selector.officialThemeId, 'official');
 assert.equal(registry.selector.activation, 'exclusive');
 assert.equal(registry.selector.persistence, 'local-storage-with-cookie-fallback');
+assert.equal(registry.selector.defaultPerformance, 'economy');
+assert.deepEqual(registry.selector.performanceModes, ['economy', 'full']);
+assert.equal(registry.selector.previewLoading, 'on-selector-open');
 assert.match(hubRuntime, new RegExp(registry.selector.storageKey.replaceAll('.', '\\.')));
+assert.match(hubRuntime, new RegExp(registry.selector.performanceStorageKey.replaceAll('.', '\\.')));
 assert.ok(hubRuntime.includes(registry.selector.globalApi));
 assert.ok(hubRuntime.includes('previousTheme.mount()'), 'switch failures must remount the previous theme');
 assert.ok(hubRuntime.includes('activeCleanup();'), 'switches must dispose the active theme');

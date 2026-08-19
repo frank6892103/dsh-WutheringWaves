@@ -14,13 +14,15 @@ Get-FileHash -Algorithm SHA256 .\*.tgz
 ## 安装
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.2.1.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.2.0.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.0.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.0.tgz
 dsh --profile web --dump-config
 dsh web
 ```
 
 组合配置中应同时出现 `ui-skin-wuthering-aemeath` 和 `ui-skin-wuthering-cantarella`。主题选择保存在当前 DSH 站点，刷新和重启服务后仍会恢复；DSH 自身的浅色/深色设置与角色主题相互独立。
+
+主题中心默认使用“省资源”模式，适合公司云电脑；它会关闭持续动画和实时毛玻璃，并减少装饰节点。需要完整动态效果时，可在主题中心切换，性能选择也会保存在当前站点。
 
 ## 恢复官方外观
 

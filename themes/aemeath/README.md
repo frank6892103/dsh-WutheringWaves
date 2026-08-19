@@ -11,6 +11,7 @@ DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 - 适配 DSH 明暗模式、窄屏和 `prefers-reduced-motion`。
 - 图片预压缩为 WebP，由插件自己的本地路由并行加载，运行时不访问官方 CDN。
 - 图片 URL 带内容哈希并使用长期缓存，刷新页面时可直接复用浏览器缓存。
+- 默认“省资源”模式只挂载核心背景、立绘和一层静态轨道，不加载面板纹理或持续动画；可在主题中心恢复完整动态效果。
 
 ## 多主题切换
 
@@ -38,7 +39,7 @@ pnpm run theme:aemeath:release
 命令会重建并校验主题，然后在 `release/` 生成 `.tgz`、`SHA256SUMS.txt`、`release.json` 和接收方安装说明 `INSTALL.md`。接收方在这些文件所在目录执行：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.2.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.0.tgz
 dsh --profile web --dump-config
 dsh web
 ```

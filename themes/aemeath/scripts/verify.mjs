@@ -13,13 +13,14 @@ const patch = await readText('cordis.patch.yml');
 const bundle = await readText('lib/client.js');
 const hostEntry = await readText('lib/index.js');
 const themeCss = await readText('src/client/theme.css');
+const themeRuntime = await readText('src/client/runtime.js');
 
 const hostModuleUrl = `${pathToFileURL(join(themeRoot, 'lib/index.js')).href}?verify=${Date.now()}`;
 const hostModule = await import(hostModuleUrl);
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-aemeath';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.2.1');
+assert.equal(packageJson.version, '0.3.0');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
@@ -127,6 +128,15 @@ assert.match(
   /body\[data-dsh-skin-aemeath\]:not\(\[data-ds-dark-theme\]\) \.aemeath-theme__scene::after/,
   'light theme must define a non-washing scene treatment',
 );
+assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
+assert.match(themeCss, /contain: strict/);
+assert.match(themeCss, /animation: none !important/);
+assert.match(themeRuntime, /fullEffects \? 3 : 1/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*aemeath-theme__panel-texture/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*aemeath-theme__grid/);
+for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
+  assert.match(selector, /data-dsh-wuthering-performance='full'/, `economy mode must skip relational selector: ${selector.trim()}`);
+}
 assert.match(
   themeCss,
   /body\[data-dsh-skin-aemeath\]:not\(\[data-ds-dark-theme\]\) \.aemeath-theme__aurora/,

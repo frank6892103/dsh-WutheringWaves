@@ -1,12 +1,16 @@
 {
   "$schema": "./theme-registry.schema.json",
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "selector": {
     "officialThemeId": "official",
     "storageKey": "dsh.wuthering-waves.active-theme.v1",
     "persistence": "local-storage-with-cookie-fallback",
     "globalApi": "__DSH_WUTHERING_THEME_HUB__",
-    "activation": "exclusive"
+    "activation": "exclusive",
+    "performanceStorageKey": "dsh.wuthering-waves.performance.v1",
+    "defaultPerformance": "economy",
+    "performanceModes": ["economy", "full"],
+    "previewLoading": "on-selector-open"
   },
   "themes": [
     {
