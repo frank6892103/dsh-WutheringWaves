@@ -1,0 +1,15 @@
+{
+  "retrievedAt": "2026-08-26",
+  "researchPage": "https://www.ourplay.net/news/detail/10888",
+  "officialReference": "https://weibo.com/7730797357",
+  "publisher": "OurPlay image mirror; underlying character and artwork by Kuro Games",
+  "usage": "Non-commercial local fan-made UI theme",
+  "assets": [
+    {
+      "file": "xinyuehu-poster.webp",
+      "optimizedFile": "xinyuehu-poster.webp",
+      "role": "character poster overlay, local scene anchor and selector preview",
+      "url": "https://cdn.ourplay.net/xspace/news/719ba7c6b4cd80760982d429231z1p35.webp"
+    }
+  ]
+}

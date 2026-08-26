@@ -30,6 +30,15 @@
       "bodyAttr": "data-dsh-skin-cantarella",
       "order": 20,
       "enabledByDefault": false
+    },
+    {
+      "id": "wuthering-xinyuehu",
+      "name": "鸣潮 · 心月狐",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu",
+      "path": "themes/xinyuehu",
+      "bodyAttr": "data-dsh-skin-xinyuehu",
+      "order": 30,
+      "enabledByDefault": false
     }
   ]
 }

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const releaseDir = join(repoRoot, 'release');
-const themePaths = ['themes/aemeath', 'themes/cantarella'];
+const themePaths = ['themes/aemeath', 'themes/cantarella', 'themes/xinyuehu'];
 
 const run = (command, args, cwd = repoRoot, shell = false) => {
   const result = spawnSync(command, args, { cwd, stdio: 'inherit', shell });
@@ -76,7 +76,7 @@ const installCommands = themes
 
 const guide = `# 鸣潮多主题 DSH 安装
 
-本目录中的两个主题包可以同时安装。安装并重启 DSH 后，从页面右下角“主题中心”选择“爱弥斯”“坎特蕾拉”或“官方外观”。
+本目录中的三个主题包可以同时安装。安装并重启 DSH 后，从页面右下角“主题中心”选择“爱弥斯”“坎特蕾拉”“心月狐”或“官方外观”。
 
 ## 校验
 
@@ -95,7 +95,7 @@ dsh --profile web --dump-config
 dsh web
 \`\`\`
 
-组合配置中应同时出现 \`ui-skin-wuthering-aemeath\` 和 \`ui-skin-wuthering-cantarella\`。主题选择保存在当前 DSH 站点，刷新和重启服务后仍会恢复；DSH 自身的浅色/深色设置与角色主题相互独立。
+组合配置中应同时出现 \`ui-skin-wuthering-aemeath\`、\`ui-skin-wuthering-cantarella\` 和 \`ui-skin-wuthering-xinyuehu\`。主题选择保存在当前 DSH 站点，刷新和重启服务后仍会恢复；DSH 自身的浅色/深色设置与角色主题相互独立。
 
 主题中心默认使用“省资源”模式，适合公司云电脑；它会关闭持续动画和实时毛玻璃，并减少装饰节点。需要完整动态效果时，可在主题中心切换，性能选择也会保存在当前站点。
 

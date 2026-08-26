@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "wuthering-xinyuehu",
+  "name": "鸣潮 · 心月狐",
+  "nameEn": "Wuthering Waves · Xin (Moon Fox)",
+  "author": "dsh-WutheringWaves contributors",
+  "tagline": "月照孤城、狐火机关与朱砂墨金",
+  "description": "以朝月、机关分形与狐火为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗自适应的心月狐主题。",
+  "tags": [
+    "fanwork",
+    "wuthering-waves",
+    "xinyuehu",
+    "moonlit-city",
+    "foxfire",
+    "fractal-machinery"
+  ],
+  "accent": "#c7463f",
+  "bodyAttr": "data-dsh-skin-xinyuehu",
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu",
+  "wiring": {
+    "id": "ui-skin-wuthering-xinyuehu",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 30,
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": false
+}
