@@ -37,7 +37,7 @@ await writeFile(join(releaseDir, 'release.json'), `${JSON.stringify({
   archive: archiveName,
   size: archive.length,
   sha256,
-  testedWith: '@deepseek-ai/dsh@0.1.0-rc.6',
+  testedWith: '@deepseek-ai/dsh@0.1.1-rc.2',
 }, null, 2)}\n`, 'utf8');
 
 const installGuide = `# 鸣潮 · 坎特蕾拉 DSH 主题安装

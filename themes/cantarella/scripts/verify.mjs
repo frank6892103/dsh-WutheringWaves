@@ -108,6 +108,8 @@ assert.match(themeCss, /@keyframes cantarella-glint/);
 assert.match(themeCss, /@keyframes cantarella-sonar/);
 assert.match(themeCss, /prefers-reduced-motion: reduce/);
 assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
+assert.match(themeCss, /\[data-composer-card\]/);
+assert.match(themeCss, /aria-label='Send message'/);
 assert.match(themeCss, /contain: strict/);
 assert.match(themeCss, /animation: none !important/);
 assert.match(themeRuntime, /fullEffects \? 5 : 2/);

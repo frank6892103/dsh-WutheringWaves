@@ -595,14 +595,16 @@ body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='sidebar'] {
 body[data-dsh-skin-cantarella] [class*='titlebar'] { background: rgba(233, 235, 255, .32) !important; border-color: rgba(101, 91, 164, .16) !important; backdrop-filter: blur(20px) saturate(1.18); }
 body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='titlebar'] { background: rgba(14, 10, 35, .4) !important; }
 body[data-dsh-skin-cantarella] [class*='composer'],
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella] [class$='_root']:has(textarea) { border-color: rgba(116, 99, 191, .32) !important; background: linear-gradient(118deg, rgba(248, 248, 255, .7), rgba(229, 230, 252, .5)) !important; box-shadow: 0 12px 42px rgba(49, 39, 102, .12), inset 0 1px rgba(255,255,255,.72), 0 0 26px rgba(126, 105, 214, .08); backdrop-filter: blur(20px) saturate(1.2); }
+body[data-dsh-skin-cantarella] [data-composer-card],
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella] [class$='_root']:has(> [data-composer-card]) { border-color: rgba(116, 99, 191, .32) !important; background: linear-gradient(118deg, rgba(248, 248, 255, .7), rgba(229, 230, 252, .5)) !important; box-shadow: 0 12px 42px rgba(49, 39, 102, .12), inset 0 1px rgba(255,255,255,.72), 0 0 26px rgba(126, 105, 214, .08); backdrop-filter: blur(20px) saturate(1.2); }
 body[data-dsh-skin-cantarella][data-ds-dark-theme] [class*='composer'],
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella][data-ds-dark-theme] [class$='_root']:has(textarea) { background: linear-gradient(118deg, rgba(25, 17, 55, .74), rgba(45, 31, 79, .56)) !important; border-color: rgba(177, 158, 255, .28) !important; box-shadow: 0 14px 50px rgba(3, 2, 16, .38), inset 0 1px rgba(255,255,255,.09), 0 0 30px rgba(128, 105, 230, .08); }
-body[data-dsh-skin-cantarella] button[aria-label='发送消息'] {
+body[data-dsh-skin-cantarella][data-ds-dark-theme] [data-composer-card],
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-cantarella][data-ds-dark-theme] [class$='_root']:has(> [data-composer-card]) { background: linear-gradient(118deg, rgba(25, 17, 55, .74), rgba(45, 31, 79, .56)) !important; border-color: rgba(177, 158, 255, .28) !important; box-shadow: 0 14px 50px rgba(3, 2, 16, .38), inset 0 1px rgba(255,255,255,.09), 0 0 30px rgba(128, 105, 230, .08); }
+body[data-dsh-skin-cantarella] button:is([aria-label='发送消息'], [aria-label='Send message']) {
   background: linear-gradient(135deg, #7460d5, #8b79e2 54%, #738fdc) !important;
   box-shadow: 0 0 16px rgba(116, 96, 213, .34), 0 8px 22px rgba(63, 45, 132, .16);
 }
-body[data-dsh-skin-cantarella] button[aria-label='发送消息']:not(:disabled):hover { filter: brightness(1.12) saturate(1.08); transform: translateY(-1px); }
+body[data-dsh-skin-cantarella] button:is([aria-label='发送消息'], [aria-label='Send message']):not(:disabled):hover { filter: brightness(1.12) saturate(1.08); transform: translateY(-1px); }
 body[data-dsh-skin-cantarella] button { transition: filter .16s ease, transform .16s ease, box-shadow .16s ease; }
 body[data-dsh-skin-cantarella] button:focus-visible,
 body[data-dsh-skin-cantarella] textarea:focus-visible { outline-color: #8775e0 !important; }
@@ -718,6 +720,7 @@ html[data-dsh-wuthering-performance='economy'] [class^='cantarella-theme__'] * {
 html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-signal,
 html[data-dsh-wuthering-performance='economy'] .cantarella-theme__hud-status,
 html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [class*='titlebar'],
-html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [class*='composer'] {
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [class*='composer'],
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-cantarella] [data-composer-card] {
   backdrop-filter: none;
 }

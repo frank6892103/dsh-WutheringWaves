@@ -524,12 +524,14 @@ html[data-dsh-wuthering-performance='full'] .aemeath-theme__grid {
 
 body[data-dsh-skin-aemeath] [class*='sidebar'],
 body[data-dsh-skin-aemeath] [class*='titlebar'],
-body[data-dsh-skin-aemeath] [class*='composer'] {
+body[data-dsh-skin-aemeath] [class*='composer'],
+body[data-dsh-skin-aemeath] [data-composer-card] {
   border-color: var(--aemeath-border) !important;
 }
 
 body[data-dsh-skin-aemeath] [class*='titlebar'],
-body[data-dsh-skin-aemeath] [class*='composer'] {
+body[data-dsh-skin-aemeath] [class*='composer'],
+body[data-dsh-skin-aemeath] [data-composer-card] {
   backdrop-filter: blur(20px) saturate(1.18);
 }
 
@@ -539,7 +541,7 @@ body[data-dsh-skin-aemeath] [class*='_sidebarCol'] {
     12px 0 34px rgba(0, 190, 255, 0.08);
 }
 
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(> [data-composer-card]) {
   position: relative;
   border-radius: 26px;
   box-shadow:
@@ -549,7 +551,7 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$=
   animation: aemeath-composer-glow 3.4s ease-in-out infinite alternate;
 }
 
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(> [data-composer-card])::before {
   position: absolute;
   z-index: 5;
   inset: -2px;
@@ -566,7 +568,7 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$=
   animation: aemeath-border-flow 3s linear infinite;
 }
 
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [data-composer-card] {
   border: 1px solid rgba(108, 235, 255, 0.52) !important;
   background:
     linear-gradient(115deg, rgba(4, 18, 42, 0.94), rgba(11, 35, 61, 0.84) 64%, rgba(47, 17, 53, 0.78)) !important;
@@ -576,26 +578,26 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$=
   backdrop-filter: blur(24px) saturate(1.35);
 }
 
-html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath]:not([data-ds-dark-theme]) [class$='_card']:has(textarea[placeholder='描述你想要构建的内容']) {
+html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath]:not([data-ds-dark-theme]) [data-composer-card] {
   background: linear-gradient(115deg, rgba(231, 247, 251, 0.88), rgba(204, 237, 245, 0.78) 64%, rgba(247, 213, 233, 0.74)) !important;
 }
 
-body[data-dsh-skin-aemeath] button[aria-label='发送消息'] {
+body[data-dsh-skin-aemeath] button:is([aria-label='发送消息'], [aria-label='Send message']) {
   background: linear-gradient(135deg, #00c8ff, #657dff 54%, #ff5fb9) !important;
   box-shadow: 0 0 15px rgba(0, 206, 255, 0.42), 0 0 28px rgba(255, 81, 181, 0.2);
 }
 
-body[data-dsh-skin-aemeath] textarea[placeholder='描述你想要构建的内容'] {
+body[data-dsh-skin-aemeath] [data-composer-card] textarea {
   caret-color: #66efff;
   text-shadow: 0 0 12px rgba(104, 235, 255, 0.12);
 }
 
-body[data-dsh-skin-aemeath] button[aria-label='发送消息']:not(:disabled):hover {
+body[data-dsh-skin-aemeath] button:is([aria-label='发送消息'], [aria-label='Send message']):not(:disabled):hover {
   filter: brightness(1.18) saturate(1.2);
   transform: translateY(-1px) scale(1.04);
 }
 
-body[data-dsh-skin-aemeath] button[aria-label='发送消息']:disabled {
+body[data-dsh-skin-aemeath] button:is([aria-label='发送消息'], [aria-label='Send message']):disabled {
   filter: saturate(0.48);
   opacity: 0.55;
 }
@@ -781,8 +783,8 @@ body[data-dsh-skin-aemeath] ::selection {
   .aemeath-theme__hud::before,
   .aemeath-theme__hud-edge::before,
   .aemeath-theme__hud-motion i,
-  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容']),
-  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(textarea[placeholder='描述你想要构建的内容'])::before {
+  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(> [data-composer-card]),
+  html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-aemeath] [class$='_root']:has(> [data-composer-card])::before {
     animation: none;
   }
 }
@@ -827,6 +829,7 @@ html[data-dsh-wuthering-performance='economy'] [class^='aemeath-theme__'] * {
 
 html[data-dsh-wuthering-performance='economy'] .aemeath-theme__hud-top,
 html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [class*='titlebar'],
-html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [class*='composer'] {
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [class*='composer'],
+html[data-dsh-wuthering-performance='economy'] body[data-dsh-skin-aemeath] [data-composer-card] {
   backdrop-filter: none;
 }

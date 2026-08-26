@@ -44,7 +44,7 @@ await writeFile(join(releaseDir, 'release.json'), `${JSON.stringify({
   archive: archiveName,
   size: archive.length,
   sha256,
-  testedWith: '@deepseek-ai/dsh@0.1.0-rc.6',
+  testedWith: '@deepseek-ai/dsh@0.1.1-rc.2',
 }, null, 2)}\n`, 'utf8');
 
 const installGuide = `# 鸣潮 · 爱弥斯 DSH 主题安装
@@ -83,7 +83,7 @@ dsh plugin --profile web remove ${packageJson.name}
 
 ## 兼容与权利说明
 
-- 已针对 \`@deepseek-ai/dsh@0.1.0-rc.6\` 与 \`@deepseek-ai/cordis@^4.0.1\` 构建、测试。
+- 已针对 \`@deepseek-ai/dsh@0.1.1-rc.2\` 与 \`@deepseek-ai/cordis@^4.0.1\` 构建、测试。
 - DSH 仍处于开发者预览期，升级后若界面结构变化，请重新验证主题。
 - 原创代码使用 MIT 许可；角色与美术素材不在 MIT 许可范围内，具体来源与限制见包内 \`NOTICE\`。
 - 该构建定位为非商业、本地玩家主题。公开发布或扩大分发前，应由分发者确认适用的素材授权与平台规则。

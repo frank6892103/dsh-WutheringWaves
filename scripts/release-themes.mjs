@@ -64,7 +64,7 @@ await writeFile(
       defaultPerformance: 'economy',
       performanceModes: ['economy', 'full'],
     },
-    testedWith: '@deepseek-ai/dsh@0.1.0-rc.6',
+    testedWith: '@deepseek-ai/dsh@0.1.1-rc.2',
     themes,
   }, null, 2)}\n`,
   'utf8',

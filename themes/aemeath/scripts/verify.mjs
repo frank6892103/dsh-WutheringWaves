@@ -129,6 +129,9 @@ assert.match(
   'light theme must define a non-washing scene treatment',
 );
 assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
+assert.match(themeCss, /\[data-composer-card\]/);
+assert.match(themeCss, /aria-label='Send message'/);
+assert.doesNotMatch(themeCss, /textarea\[placeholder=/);
 assert.match(themeCss, /contain: strict/);
 assert.match(themeCss, /animation: none !important/);
 assert.match(themeRuntime, /fullEffects \? 3 : 1/);
