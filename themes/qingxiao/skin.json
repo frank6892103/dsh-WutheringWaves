@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "wuthering-qingxiao",
+  "name": "鸣潮 · 清宵",
+  "nameEn": "Wuthering Waves · Qingxiao",
+  "author": "dsh-WutheringWaves contributors",
+  "tagline": "云岚琴心、万剑清光与青玉长风",
+  "description": "以云海、琴弦、心剑与梦州青玉为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗自适应的清宵主题。",
+  "tags": [
+    "fanwork",
+    "wuthering-waves",
+    "qingxiao",
+    "cloud-sea",
+    "sword-intent"
+  ],
+  "accent": "#54cbd0",
+  "bodyAttr": "data-dsh-skin-qingxiao",
+  "package": "@dsh-external/dsh-client-ui-skin-wuthering-qingxiao",
+  "wiring": {
+    "id": "ui-skin-wuthering-qingxiao",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 40,
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": false
+}

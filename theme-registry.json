@@ -39,6 +39,15 @@
       "bodyAttr": "data-dsh-skin-xinyuehu",
       "order": 30,
       "enabledByDefault": false
+    },
+    {
+      "id": "wuthering-qingxiao",
+      "name": "鸣潮 · 清宵",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-qingxiao",
+      "path": "themes/qingxiao",
+      "bodyAttr": "data-dsh-skin-qingxiao",
+      "order": 40,
+      "enabledByDefault": false
     }
   ]
 }

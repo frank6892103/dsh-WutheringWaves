@@ -1,0 +1,15 @@
+{
+  "retrievedAt": "2026-08-26",
+  "sourcePage": "https://www.taptap.cn/moment/826472093573974468",
+  "officialReference": "https://wutheringwaves.kurogames.com/zh-tw",
+  "publisher": "TapTap public character post; underlying character and artwork by Kuro Games",
+  "usage": "Non-commercial local fan-made UI theme",
+  "assets": [
+    {
+      "file": "qingxiao-profile.jpg",
+      "optimizedFile": "qingxiao-poster.webp",
+      "role": "character poster, viewport visual anchor, and selector preview",
+      "url": "https://img2-tc.tapimg.com/moment/etag/ebd6d33fd8f06359ccacdea4a567bbf2.png/_tap_ugc.jpg"
+    }
+  ]
+}

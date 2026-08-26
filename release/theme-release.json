@@ -11,7 +11,7 @@
       "full"
     ]
   },
-  "testedWith": "@deepseek-ai/dsh@0.1.0-rc.6",
+  "testedWith": "@deepseek-ai/dsh@0.1.1-rc.2",
   "themes": [
     {
       "id": "wuthering-aemeath",
@@ -19,8 +19,8 @@
       "package": "@dsh-external/dsh-client-ui-skin-wuthering-aemeath",
       "version": "0.3.1",
       "archive": "dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz",
-      "size": 849716,
-      "sha256": "7a65829abc60826fae5b5923ae6cb45afba3e26eb967f9cbec55402f3be71990"
+      "size": 849708,
+      "sha256": "b26feb902623a3775117e4f7ce1527ba3befae0dd61fd3f42706c8aadc9e9dbe"
     },
     {
       "id": "wuthering-cantarella",
@@ -28,8 +28,26 @@
       "package": "@dsh-external/dsh-client-ui-skin-wuthering-cantarella",
       "version": "0.3.1",
       "archive": "dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz",
-      "size": 278719,
-      "sha256": "0243b21674cc204263365bfc759749264bfb427776b6f6c9b2258854ca949e71"
+      "size": 278766,
+      "sha256": "f1b5b846cdb7e0ee3dec72acf37d1d72cf705eeeea168eab74e4c7fd49b41dd1"
+    },
+    {
+      "id": "wuthering-xinyuehu",
+      "name": "鸣潮 · 心月狐",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu",
+      "version": "0.1.0",
+      "archive": "dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.1.0.tgz",
+      "size": 634430,
+      "sha256": "9d6c6ffb088a20f6fee86dc4680cd112f4709425f44cf5ee19cb2f781e1f6705"
+    },
+    {
+      "id": "wuthering-qingxiao",
+      "name": "鸣潮 · 清宵",
+      "package": "@dsh-external/dsh-client-ui-skin-wuthering-qingxiao",
+      "version": "0.1.0",
+      "archive": "dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz",
+      "size": 595027,
+      "sha256": "bea8df2cf931e2323576a401aa14012f6eda1d24f2a222e89afaab969327971d"
     }
   ]
 }

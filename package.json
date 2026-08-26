@@ -14,8 +14,11 @@
     "theme:xinyuehu:build": "node themes/xinyuehu/scripts/build-client.mjs",
     "theme:xinyuehu:test": "node themes/xinyuehu/scripts/verify.mjs",
     "theme:xinyuehu:release": "node themes/xinyuehu/scripts/release.mjs",
-    "themes:build": "pnpm run theme:aemeath:build && pnpm run theme:cantarella:build && pnpm run theme:xinyuehu:build",
-    "themes:test": "node scripts/verify-registry.mjs && node scripts/verify-theme-hub.mjs && pnpm run theme:aemeath:test && pnpm run theme:cantarella:test && pnpm run theme:xinyuehu:test",
+    "theme:qingxiao:build": "node themes/qingxiao/scripts/build-client.mjs",
+    "theme:qingxiao:test": "node themes/qingxiao/scripts/verify.mjs",
+    "theme:qingxiao:release": "node themes/qingxiao/scripts/release.mjs",
+    "themes:build": "pnpm run theme:aemeath:build && pnpm run theme:cantarella:build && pnpm run theme:xinyuehu:build && pnpm run theme:qingxiao:build",
+    "themes:test": "node scripts/verify-registry.mjs && node scripts/verify-theme-hub.mjs && pnpm run theme:aemeath:test && pnpm run theme:cantarella:test && pnpm run theme:xinyuehu:test && pnpm run theme:qingxiao:test",
     "themes:release": "node scripts/release-themes.mjs"
   },
   "dependencies": {
