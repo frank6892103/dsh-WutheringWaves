@@ -37,6 +37,7 @@
     "@deepseek-ai/cordis": "^4.0.1"
   },
   "files": [
+    "assets/qingxiao-character.png",
     "assets/qingxiao-poster.webp",
     "assets/source.json",
     "cordis.patch.yml",

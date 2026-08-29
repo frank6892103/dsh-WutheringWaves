@@ -56,6 +56,31 @@ function mountQingxiaoTheme() {
   cloudSea.className = 'qingxiao-theme__cloud-sea';
   scene.append(cloudSea);
 
+  const portraitFrame = document.createElement('div');
+  portraitFrame.className = 'qingxiao-theme__portrait-frame';
+  const characterAura = document.createElement('span');
+  characterAura.className = 'qingxiao-theme__character-aura';
+  const characterOrbit = document.createElement('span');
+  characterOrbit.className = 'qingxiao-theme__character-orbit';
+  characterOrbit.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
+  const character = document.createElement('img');
+  character.className = 'qingxiao-theme__character';
+  character.src = QINGXIAO_ASSET_CHARACTER;
+  character.alt = '';
+  character.decoding = 'async';
+  character.fetchPriority = 'high';
+  const weaponPulse = document.createElement('span');
+  weaponPulse.className = 'qingxiao-theme__weapon-pulse';
+  const resonanceNodes = document.createElement('span');
+  resonanceNodes.className = 'qingxiao-theme__resonance-nodes';
+  for (let index = 0; index < (fullEffects ? 7 : 3); index += 1) {
+    const node = document.createElement('i');
+    node.style.setProperty('--node-index', index);
+    resonanceNodes.append(node);
+  }
+  portraitFrame.append(characterAura, characterOrbit, character, weaponPulse, resonanceNodes);
+  scene.append(portraitFrame);
+
   const swordField = document.createElement('div');
   swordField.className = 'qingxiao-theme__sword-field';
   for (let index = 0; index < (fullEffects ? 9 : 3); index += 1) {
@@ -85,10 +110,16 @@ function mountQingxiaoTheme() {
     scene.append(swordTrace);
   }
 
-  const poster = createQingxiaoOwnedElement('img', 'qingxiao-theme__poster');
-  poster.src = QINGXIAO_ASSET_POSTER;
-  poster.alt = '';
-  poster.decoding = 'async';
+  let foreground = null;
+  if (fullEffects) {
+    foreground = createQingxiaoOwnedElement('div', 'qingxiao-theme__foreground');
+    foreground.setAttribute('aria-hidden', 'true');
+    for (let index = 0; index < 7; index += 1) {
+      const bladeLight = document.createElement('i');
+      bladeLight.style.setProperty('--blade-index', index);
+      foreground.append(bladeLight);
+    }
+  }
 
   const seal = document.createElement('div');
   seal.className = 'qingxiao-theme__seal';
@@ -109,6 +140,7 @@ function mountQingxiaoTheme() {
   const hudMark = document.createElement('i');
   hudMark.className = 'qingxiao-theme__hud-mark';
   const hudCopy = document.createElement('div');
+  hudCopy.className = 'qingxiao-theme__hud-copy';
   const hudLabel = document.createElement('span');
   hudLabel.textContent = 'HEAVEN · EARTH · HEARTSWORD';
   const hudValue = document.createElement('strong');
@@ -116,10 +148,14 @@ function mountQingxiaoTheme() {
   const hudMeta = document.createElement('small');
   hudMeta.textContent = fullEffects ? 'WIND CHANNEL // FULL' : 'WIND CHANNEL // STILL';
   hudCopy.append(hudLabel, hudValue, hudMeta);
-  hud.append(hudMark, hudCopy);
+  const hudSignal = document.createElement('div');
+  hudSignal.className = 'qingxiao-theme__hud-signal';
+  for (let index = 0; index < 4; index += 1) hudSignal.append(document.createElement('i'));
+  hud.append(hudMark, hudCopy, hudSignal);
 
   body.prepend(scene);
-  body.append(poster, brand, hud);
+  body.append(brand, hud);
+  if (foreground) body.append(foreground);
   body.setAttribute(QINGXIAO_BODY_ATTR, '');
   document.title = '鸣潮 · 清宵 | DeepSeek Harness';
 

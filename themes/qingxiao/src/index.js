@@ -5,7 +5,14 @@ import { fileURLToPath } from 'node:url';
 const QINGXIAO_ASSET_ROUTE = '/plugins/@dsh-external/dsh-client-ui-skin-wuthering-qingxiao/assets';
 const assetRoot = join(dirname(fileURLToPath(import.meta.url)), '..', 'assets');
 const assets = new Map([
-  ['qingxiao-poster.webp', join(assetRoot, 'qingxiao-poster.webp')],
+  ['qingxiao-poster.webp', {
+    path: join(assetRoot, 'qingxiao-poster.webp'),
+    contentType: 'image/webp',
+  }],
+  ['qingxiao-character.png', {
+    path: join(assetRoot, 'qingxiao-character.png'),
+    contentType: 'image/png',
+  }],
 ]);
 
 export const inject = ['webServer'];
@@ -26,19 +33,19 @@ export function apply(ctx) {
         const fileName = pathname.startsWith(`${QINGXIAO_ASSET_ROUTE}/`)
           ? pathname.slice(QINGXIAO_ASSET_ROUTE.length + 1)
           : '';
-        const assetPath = assets.get(fileName);
-        if (!assetPath) {
+        const asset = assets.get(fileName);
+        if (!asset) {
           res.writeHead(404);
           res.end();
           return;
         }
 
         try {
-          const body = await readFile(assetPath);
+          const body = await readFile(asset.path);
           res.writeHead(200, {
             'cache-control': 'public, max-age=31536000, immutable',
             'content-length': body.length,
-            'content-type': 'image/webp',
+            'content-type': asset.contentType,
           });
           res.end(req.method === 'HEAD' ? undefined : body);
         } catch {

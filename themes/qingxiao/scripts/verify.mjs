@@ -21,6 +21,7 @@ assert.equal(packageJson.version, '0.1.0');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
+assert.ok(packageJson.files.includes('assets/qingxiao-character.png'));
 assert.ok(packageJson.files.includes('assets/qingxiao-poster.webp'));
 assert.ok(packageJson.files.includes('assets/source.json'));
 assert.ok(packageJson.files.includes('preview'));
@@ -43,18 +44,25 @@ assert.ok(bundle.includes('__DSH_WUTHERING_THEME_HUB__'));
 assert.ok(bundle.includes("id: 'wuthering-qingxiao'"));
 assert.ok(bundle.includes('mount: mountQingxiaoTheme'));
 assert.ok(bundle.includes('qingxiao-theme__moon-gate'));
+assert.ok(bundle.includes('qingxiao-theme__portrait-frame'));
+assert.ok(bundle.includes('qingxiao-theme__character-aura'));
+assert.ok(bundle.includes('qingxiao-theme__weapon-pulse'));
 assert.ok(bundle.includes('qingxiao-theme__sword-field'));
 assert.ok(bundle.includes('qingxiao-theme__strings'));
 assert.ok(bundle.includes('qingxiao-theme__hud'));
+assert.ok(bundle.includes('qingxiao-theme__hud-signal'));
+assert.ok(bundle.includes('qingxiao-theme__foreground'));
 assert.ok(bundle.includes('previousTheme.mount()'));
 assert.ok(bundle.includes('observer.disconnect()'));
 assert.ok(bundle.includes('body.removeAttribute(QINGXIAO_BODY_ATTR)'));
 assert.doesNotMatch(bundle, /data:image\//);
 assert.doesNotMatch(bundle, /;base64,/);
 assert.equal((bundle.match(/\/assets\/qingxiao-poster\.webp\?rev=[a-f0-9]{12}/g) ?? []).length, 1);
+assert.equal((bundle.match(/\/assets\/qingxiao-character\.png\?rev=[a-f0-9]{12}/g) ?? []).length, 1);
 assert.ok(Buffer.byteLength(bundle) < 100_000, `client bundle is too large: ${Buffer.byteLength(bundle)} bytes`);
 assert.match(hostEntry, /max-age=31536000, immutable/);
-assert.match(hostEntry, /content-type': 'image\/webp'/);
+assert.match(hostEntry, /contentType: 'image\/webp'/);
+assert.match(hostEntry, /contentType: 'image\/png'/);
 assert.deepEqual(hostModule.inject, ['webServer']);
 
 let assetRoute;
@@ -88,7 +96,12 @@ assert.equal(assetResponse.headers['content-type'], 'image/webp');
 assert.equal(assetResponse.headers['cache-control'], 'public, max-age=31536000, immutable');
 assert.equal(assetResponse.headers['content-length'], assetResponse.body.length);
 assert.equal(assetResponse.body.subarray(0, 4).toString('ascii'), 'RIFF');
+const characterResponse = await requestAsset('GET', `${assetRoute.path}/qingxiao-character.png?rev=verify`);
+assert.equal(characterResponse.status, 200);
+assert.equal(characterResponse.headers['content-type'], 'image/png');
+assert.equal(characterResponse.body.subarray(1, 4).toString('ascii'), 'PNG');
 assert.equal((await requestAsset('HEAD', `${assetRoute.path}/qingxiao-poster.webp`)).body, undefined);
+assert.equal((await requestAsset('HEAD', `${assetRoute.path}/qingxiao-character.png`)).body, undefined);
 assert.equal((await requestAsset('GET', `${assetRoute.path}/missing.webp`)).status, 404);
 assert.equal((await requestAsset('POST', `${assetRoute.path}/qingxiao-poster.webp`)).status, 405);
 
@@ -101,13 +114,26 @@ for (const [, selector, declarations] of sidebarRules) {
 const lightRootRule = themeCss.match(/body\[data-dsh-skin-qingxiao\]\s*\{([^{}]*)\}/)?.[1] ?? '';
 const lightBaseAlpha = Number(lightRootRule.match(/--dsw-alias-bg-base:\s*rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/)?.[1]);
 assert.ok(lightBaseAlpha <= 0.35, `light theme base layer must reveal the scene (received ${lightBaseAlpha})`);
+const darkRootRule = themeCss.match(/body\[data-dsh-skin-qingxiao\]\[data-ds-dark-theme\]\s*\{([^{}]*)\}/)?.[1] ?? '';
+const darkBaseAlpha = Number(darkRootRule.match(/--dsw-alias-bg-base:\s*rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/)?.[1]);
+assert.ok(darkBaseAlpha <= 0.3, `dark theme base layer must reveal the portrait (received ${darkBaseAlpha})`);
+assert.match(themeRuntime, /character\.src = QINGXIAO_ASSET_CHARACTER/);
+assert.match(themeRuntime, /portraitFrame\.append\(characterAura, characterOrbit, character, weaponPulse, resonanceNodes\)/);
+assert.match(themeRuntime, /scene\.append\(portraitFrame\)/);
+assert.doesNotMatch(themeRuntime, /body\.append\(poster/);
 assert.match(themeCss, /body\[data-dsh-skin-qingxiao\]\[data-ds-dark-theme\]/);
 assert.match(themeCss, /qingxiao-theme__moon-gate/);
 assert.match(themeCss, /qingxiao-theme__mountains/);
 assert.match(themeCss, /@keyframes qingxiao-sword/);
 assert.match(themeCss, /@keyframes qingxiao-leaf/);
+assert.match(themeCss, /@keyframes qingxiao-foreground-blade/);
+assert.match(themeCss, /@keyframes qingxiao-character-breathe/);
+assert.match(themeCss, /@keyframes qingxiao-resonance-arc/);
+assert.match(themeCss, /@keyframes qingxiao-hud-scan/);
 assert.match(themeCss, /prefers-reduced-motion: reduce/);
 assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
+assert.match(themeCss, /\.dsh-theme-hub__trigger/);
+assert.match(themeCss, /\.dsh-theme-hub__panel/);
 assert.match(themeCss, /\[data-composer-card\]/);
 assert.match(themeCss, /aria-label='Send message'/);
 assert.match(themeCss, /contain: strict/);
@@ -116,6 +142,8 @@ assert.match(themeRuntime, /fullEffects \? 9 : 3/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*qingxiao-theme__strings/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*qingxiao-theme__leaves/);
 assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*qingxiao-theme__sword-trace/);
+assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*qingxiao-theme__foreground/);
+assert.match(themeRuntime, /fullEffects \? 'WIND CHANNEL \/\/ FULL' : 'WIND CHANNEL \/\/ STILL'/);
 for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
   assert.match(selector, /data-dsh-wuthering-performance='full'/, `economy mode must skip relational selector: ${selector.trim()}`);
 }
@@ -125,6 +153,10 @@ assert.ok(poster.length > 100_000);
 assert.equal(poster.subarray(0, 4).toString('ascii'), 'RIFF');
 assert.equal(poster.subarray(8, 12).toString('ascii'), 'WEBP');
 assert.match(sources.assets[0].url, /^https:\/\//);
+const character = await readFile(join(themeRoot, 'assets/qingxiao-character.png'));
+assert.ok(character.length > 100_000);
+assert.equal(character.subarray(1, 4).toString('ascii'), 'PNG');
+assert.equal(sources.assets[1].derivedFrom, 'qingxiao-poster.webp');
 
 for (const previewPath of Object.values(skin.preview)) {
   const preview = await readFile(join(themeRoot, previewPath));
@@ -133,4 +165,4 @@ for (const previewPath of Object.values(skin.preview)) {
   assert.equal(preview.subarray(8, 12).toString('ascii'), 'WEBP');
 }
 
-console.log(`Verified ${skin.name}: bundle ${bundle.length.toLocaleString()} chars, 1 local WebP asset`);
+console.log(`Verified ${skin.name}: bundle ${bundle.length.toLocaleString()} chars, 2 local image assets`);

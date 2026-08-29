@@ -10,6 +10,13 @@
       "optimizedFile": "qingxiao-poster.webp",
       "role": "character poster, viewport visual anchor, and selector preview",
       "url": "https://img2-tc.tapimg.com/moment/etag/ebd6d33fd8f06359ccacdea4a567bbf2.png/_tap_ugc.jpg"
+    },
+    {
+      "file": "qingxiao-character.png",
+      "derivedFrom": "qingxiao-poster.webp",
+      "role": "transparent character layer separated from the poster for the viewport composition",
+      "process": "OpenAI built-in image editing, background extraction and alpha-channel repair; generated 2026-08-28",
+      "url": "https://img2-tc.tapimg.com/moment/etag/ebd6d33fd8f06359ccacdea4a567bbf2.png/_tap_ugc.jpg"
     }
   ]
 }
