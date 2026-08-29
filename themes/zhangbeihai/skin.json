@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "threebody-zhangbeihai",
+  "name": "三体 · 章北海",
+  "nameEn": "The Three-Body Problem · Zhang Beihai",
+  "author": "dsh-WutheringWaves contributors",
+  "tagline": "危机纪元、三恒星混沌轨道与不可逆的星际航向",
+  "description": "以三恒星混沌轨道、黑暗森林广播、自然选择号舰队指令和舰桥晨光为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗协调的章北海主题。",
+  "tags": [
+    "fanwork",
+    "three-body",
+    "zhang-beihai",
+    "space-fleet",
+    "strategic-resolve"
+  ],
+  "accent": "#b64f46",
+  "bodyAttr": "data-dsh-skin-zhangbeihai",
+  "package": "@dsh-external/dsh-client-ui-skin-threebody-zhangbeihai",
+  "wiring": {
+    "id": "ui-skin-threebody-zhangbeihai",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 50,
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": false
+}

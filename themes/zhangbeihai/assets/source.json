@@ -1,0 +1,25 @@
+{
+  "createdAt": "2026-08-28",
+  "generator": "OpenAI built-in image generation",
+  "usage": "Non-commercial local fan-made UI theme",
+  "assets": [
+    {
+      "file": "zhangbeihai-command.webp",
+      "role": "original cinematic command-deck composition and selector preview",
+      "provenance": "AI-generated original composition; no real actor or screen adaptation used as a reference",
+      "promptSummary": "Original middle-aged Chinese starship commander, quiet resolve, Earth horizon, restrained graphite, navy, vermilion editorial science-fiction palette"
+    },
+    {
+      "file": "zhangbeihai-character-cutout-v6.png",
+      "role": "transparent mid-thigh character hero cutout",
+      "provenance": "Generated from the original AI composition as an identity-preserving character extraction and outpaint; the baked checkerboard was converted to a verified alpha matte with a strict neutral-background classifier in scripts/fix-character-alpha.py, then scripts/defringe-character.py applied a two-pixel body-edge contraction with a feathered face guard so the nose, lips, jaw, chin, ear and brow remain complete",
+      "promptSummary": "Preserve the exact fictional officer face, pose and dark command uniform; remove the checkerboard and pale edge contamination; never erode or redesign facial features; no text, logo or extra object"
+    },
+    {
+      "file": "zhangbeihai-background.png",
+      "role": "clean 16:9 spacecraft observation-deck background plate",
+      "provenance": "Generated from the original AI composition by removing the fictional officer and reconstructing the obscured environment",
+      "promptSummary": "Empty command-deck window, starfield and Earth limb; quiet hard-science atmosphere; no humans, text, HUD, logo or watermark"
+    }
+  ]
+}

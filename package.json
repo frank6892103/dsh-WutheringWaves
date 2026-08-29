@@ -17,8 +17,11 @@
     "theme:qingxiao:build": "node themes/qingxiao/scripts/build-client.mjs",
     "theme:qingxiao:test": "node themes/qingxiao/scripts/verify.mjs",
     "theme:qingxiao:release": "node themes/qingxiao/scripts/release.mjs",
-    "themes:build": "pnpm run theme:aemeath:build && pnpm run theme:cantarella:build && pnpm run theme:xinyuehu:build && pnpm run theme:qingxiao:build",
-    "themes:test": "node scripts/verify-registry.mjs && node scripts/verify-theme-hub.mjs && pnpm run theme:aemeath:test && pnpm run theme:cantarella:test && pnpm run theme:xinyuehu:test && pnpm run theme:qingxiao:test",
+    "theme:zhangbeihai:build": "node themes/zhangbeihai/scripts/build-client.mjs",
+    "theme:zhangbeihai:test": "node themes/zhangbeihai/scripts/verify.mjs",
+    "theme:zhangbeihai:release": "node themes/zhangbeihai/scripts/release.mjs",
+    "themes:build": "pnpm run theme:aemeath:build && pnpm run theme:cantarella:build && pnpm run theme:xinyuehu:build && pnpm run theme:qingxiao:build && pnpm run theme:zhangbeihai:build",
+    "themes:test": "node scripts/verify-registry.mjs && node scripts/verify-theme-hub.mjs && pnpm run theme:aemeath:test && pnpm run theme:cantarella:test && pnpm run theme:xinyuehu:test && pnpm run theme:qingxiao:test && pnpm run theme:zhangbeihai:test",
     "themes:release": "node scripts/release-themes.mjs"
   },
   "dependencies": {

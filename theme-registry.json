@@ -48,6 +48,15 @@
       "bodyAttr": "data-dsh-skin-qingxiao",
       "order": 40,
       "enabledByDefault": false
+    },
+    {
+      "id": "threebody-zhangbeihai",
+      "name": "三体 · 章北海",
+      "package": "@dsh-external/dsh-client-ui-skin-threebody-zhangbeihai",
+      "path": "themes/zhangbeihai",
+      "bodyAttr": "data-dsh-skin-zhangbeihai",
+      "order": 50,
+      "enabledByDefault": false
     }
   ]
 }
