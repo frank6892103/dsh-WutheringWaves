@@ -1,4 +1,5 @@
 b26feb902623a3775117e4f7ce1527ba3befae0dd61fd3f42706c8aadc9e9dbe  dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
 f1b5b846cdb7e0ee3dec72acf37d1d72cf705eeeea168eab74e4c7fd49b41dd1  dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
-9d6c6ffb088a20f6fee86dc4680cd112f4709425f44cf5ee19cb2f781e1f6705  dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.1.0.tgz
-bea8df2cf931e2323576a401aa14012f6eda1d24f2a222e89afaab969327971d  dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
+caef187257730b5e15f65e674c93c56172b30203ca9c806a4750573ed7ca6e0e  dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
+a664b8876bda6cd5e67498339dfe87eede112fa882f12658c3cfd292962c6f63  dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
+cc0f09bce3bb89fa7b13f23ecd24d356a43b124838a10149476a6ae2f2bd5ac0  dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
