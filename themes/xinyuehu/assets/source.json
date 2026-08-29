@@ -8,8 +8,15 @@
     {
       "file": "xinyuehu-poster.webp",
       "optimizedFile": "xinyuehu-poster.webp",
-      "role": "character poster overlay, local scene anchor and selector preview",
+      "role": "source poster and selector preview",
       "url": "https://cdn.ourplay.net/xspace/news/719ba7c6b4cd80760982d429231z1p35.webp"
+    },
+    {
+      "file": "xinyuehu-character-v2.png",
+      "optimizedFile": "xinyuehu-character-v2.png",
+      "role": "transparent character layer derived from the source poster for the local theme",
+      "source": "xinyuehu-poster.webp",
+      "process": "OpenAI ImageGen identity-preserving background extraction with deterministic alpha cleanup"
     }
   ]
 }

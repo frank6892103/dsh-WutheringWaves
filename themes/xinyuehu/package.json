@@ -1,6 +1,6 @@
 {
   "name": "@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "description": "A switchable Xinyuehu theme for DeepSeek Harness Web GUI",
   "keywords": [
@@ -38,6 +38,7 @@
   },
   "files": [
     "assets/xinyuehu-poster.webp",
+    "assets/xinyuehu-character-v2.png",
     "assets/source.json",
     "cordis.patch.yml",
     "lib/index.js",

@@ -9,12 +9,20 @@ function createXinyuehuOwnedElement(tagName, className) {
   return element;
 }
 
+function appendRepeated(parent, tagName, count) {
+  for (let index = 0; index < count; index += 1) {
+    const element = document.createElement(tagName);
+    element.style.setProperty('--item-index', index);
+    parent.append(element);
+  }
+}
+
 function mountXinyuehuTheme() {
   const body = document.body;
   const head = document.head;
   if (!body || !head) throw new Error('Xinyuehu theme requires document.body and document.head');
-  const fullEffects = document.documentElement?.getAttribute('data-dsh-wuthering-performance') === 'full';
 
+  const fullEffects = document.documentElement?.getAttribute('data-dsh-wuthering-performance') === 'full';
   document
     .querySelectorAll(`[${XINYUEHU_OWNER_ATTR}="${XINYUEHU_PLUGIN_ID}"]`)
     .forEach((node) => node.remove());
@@ -38,142 +46,114 @@ function mountXinyuehuTheme() {
   const scene = createXinyuehuOwnedElement('div', 'xinyuehu-theme__scene');
   scene.setAttribute('aria-hidden', 'true');
 
-  const dreamscape = document.createElement('div');
-  dreamscape.className = 'xinyuehu-theme__dreamscape';
-  scene.append(dreamscape);
+  const paper = document.createElement('div');
+  paper.className = 'xinyuehu-theme__paper';
 
-  const lattice = document.createElement('div');
-  lattice.className = 'xinyuehu-theme__lattice';
-  scene.append(lattice);
+  const terrace = document.createElement('div');
+  terrace.className = 'xinyuehu-theme__terrace';
 
-  if (fullEffects) {
-    const orbits = document.createElement('div');
-    orbits.className = 'xinyuehu-theme__orbits';
-    scene.append(orbits);
-  }
-
-  const moon = document.createElement('div');
+  const moonGate = document.createElement('div');
+  moonGate.className = 'xinyuehu-theme__moon-gate';
+  const gateRing = document.createElement('i');
+  gateRing.className = 'xinyuehu-theme__gate-ring';
+  const moon = document.createElement('i');
   moon.className = 'xinyuehu-theme__moon';
-  scene.append(moon);
+  const gateTicks = document.createElement('span');
+  gateTicks.className = 'xinyuehu-theme__gate-ticks';
+  moonGate.append(gateRing, moon, gateTicks);
 
-  if (fullEffects) {
-    const astrolabe = document.createElement('div');
-    astrolabe.className = 'xinyuehu-theme__astrolabe';
-    scene.append(astrolabe);
+  const foldingScreen = document.createElement('div');
+  foldingScreen.className = 'xinyuehu-theme__folding-screen';
+  appendRepeated(foldingScreen, 'i', 4);
 
-    const silks = document.createElement('div');
-    silks.className = 'xinyuehu-theme__silks';
-    silks.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
-    scene.append(silks);
-  }
-
-  const foxfireField = document.createElement('div');
-  foxfireField.className = 'xinyuehu-theme__foxfire-field';
-  for (let index = 0; index < (fullEffects ? 5 : 2); index += 1) {
-    const foxfire = document.createElement('i');
-    foxfire.className = `xinyuehu-theme__foxfire xinyuehu-theme__foxfire--${index + 1}`;
-    const flameTail = document.createElement('span');
-    foxfire.append(flameTail);
-    foxfireField.append(foxfire);
-  }
-  scene.append(foxfireField);
-
-  if (fullEffects) {
-    const motes = document.createElement('div');
-    motes.className = 'xinyuehu-theme__motes';
-    for (let index = 0; index < 12; index += 1) {
-      const mote = document.createElement('i');
-      mote.style.setProperty('--mote-index', index);
-      mote.style.setProperty('--mote-size', `${3 + (index % 5) * 2}px`);
-      mote.style.setProperty('--mote-left', `${4 + index * 7.2}%`);
-      mote.style.setProperty('--mote-bottom', `${-5 - (index % 4) * 8}%`);
-      motes.append(mote);
-    }
-    scene.append(motes);
-
-    const sparks = document.createElement('div');
-    sparks.className = 'xinyuehu-theme__sparks';
-    for (let index = 0; index < 9; index += 1) sparks.append(document.createElement('i'));
-    scene.append(sparks);
-  }
-
-  const portrait = createXinyuehuOwnedElement('img', 'xinyuehu-theme__portrait');
-  portrait.src = XINYUEHU_ASSET_POSTER;
+  const portraitFrame = document.createElement('div');
+  portraitFrame.className = 'xinyuehu-theme__portrait-frame';
+  const portraitAura = document.createElement('span');
+  portraitAura.className = 'xinyuehu-theme__portrait-aura';
+  const portraitOrbit = document.createElement('span');
+  portraitOrbit.className = 'xinyuehu-theme__portrait-orbit';
+  appendRepeated(portraitOrbit, 'i', 3);
+  const portrait = document.createElement('img');
+  portrait.className = 'xinyuehu-theme__portrait';
+  portrait.src = XINYUEHU_ASSET_POSTER.replace(/xinyuehu-poster\.webp\?.*$/, 'xinyuehu-character-v2.png?rev=0.3.0');
   portrait.alt = '';
   portrait.decoding = 'async';
+  portrait.fetchPriority = 'high';
+  const tailFlame = document.createElement('span');
+  tailFlame.className = 'xinyuehu-theme__tail-flame';
+  appendRepeated(tailFlame, 'i', fullEffects ? 7 : 3);
+  const resonanceNodes = document.createElement('span');
+  resonanceNodes.className = 'xinyuehu-theme__resonance-nodes';
+  appendRepeated(resonanceNodes, 'i', fullEffects ? 8 : 4);
+  const portraitGlint = document.createElement('span');
+  portraitGlint.className = 'xinyuehu-theme__portrait-glint';
+  portraitFrame.append(portraitAura, portraitOrbit, tailFlame, portrait, portraitGlint, resonanceNodes);
 
-  const sigil = document.createElement('div');
-  sigil.className = 'xinyuehu-theme__sigil';
-  sigil.append(document.createElement('i'), document.createElement('i'), document.createElement('i'));
-  scene.append(sigil);
+  const fractal = document.createElement('div');
+  fractal.className = 'xinyuehu-theme__fractal';
+  appendRepeated(fractal, 'i', fullEffects ? 6 : 3);
 
-  const brand = createXinyuehuOwnedElement('div', 'xinyuehu-theme__brand');
-  const brandName = document.createElement('strong');
-  brandName.textContent = 'XIN · 心';
-  const brandTagline = document.createElement('span');
-  brandTagline.textContent = '朝月清辉 · MOONLIT HEART';
-  brand.append(brandName, brandTagline);
+  const lanterns = document.createElement('div');
+  lanterns.className = 'xinyuehu-theme__lanterns';
+  appendRepeated(lanterns, 'i', fullEffects ? 9 : 4);
+
+  const clouds = document.createElement('div');
+  clouds.className = 'xinyuehu-theme__clouds';
+  clouds.append(document.createElement('i'), document.createElement('i'));
+
+  let foxSparks = null;
+  if (fullEffects) {
+    foxSparks = document.createElement('div');
+    foxSparks.className = 'xinyuehu-theme__fox-sparks';
+    appendRepeated(foxSparks, 'i', 12);
+  }
+
+  scene.append(paper, terrace, moonGate, foldingScreen, portraitFrame, fractal, lanterns, clouds);
+  if (foxSparks) scene.append(foxSparks);
   body.prepend(scene);
-  body.append(portrait, brand);
 
-  const hud = createXinyuehuOwnedElement('div', 'xinyuehu-theme__hud');
-  hud.setAttribute('aria-hidden', 'true');
+  const hudTop = createXinyuehuOwnedElement('div', 'xinyuehu-theme__hud xinyuehu-theme__hud--top');
+  hudTop.setAttribute('aria-hidden', 'true');
+  const hudTopMark = document.createElement('i');
+  hudTopMark.className = 'xinyuehu-theme__hud-mark';
+  hudTopMark.textContent = '心';
+  const hudTopCopy = document.createElement('div');
+  hudTopCopy.className = 'xinyuehu-theme__hud-copy';
+  const hudTopLabel = document.createElement('span');
+  hudTopLabel.textContent = 'MYRIAD MOON COURT · 07';
+  const hudTopValue = document.createElement('strong');
+  hudTopValue.textContent = '心月狐 · 万相分形';
+  const hudTopMeta = document.createElement('small');
+  hudTopMeta.textContent = fullEffects ? 'FOXFIRE LINK // FULL' : 'FOXFIRE LINK // STILL';
+  hudTopCopy.append(hudTopLabel, hudTopValue, hudTopMeta);
+  const hudTopSignal = document.createElement('div');
+  hudTopSignal.className = 'xinyuehu-theme__hud-signal';
+  appendRepeated(hudTopSignal, 'i', 5);
+  hudTop.append(hudTopMark, hudTopCopy, hudTopSignal);
 
-  const hudSignal = document.createElement('div');
-  hudSignal.className = 'xinyuehu-theme__hud-signal';
-  const hudSonar = document.createElement('i');
-  hudSonar.className = 'xinyuehu-theme__hud-compass';
-  if (fullEffects) hudSonar.append(document.createElement('span'));
-  const hudSignalCopy = document.createElement('div');
-  hudSignalCopy.className = 'xinyuehu-theme__hud-copy';
-  const hudSignalLabel = document.createElement('span');
-  hudSignalLabel.textContent = 'LUNAR FRACTAL · 07';
-  const hudSignalValue = document.createElement('strong');
-  hudSignalValue.textContent = 'MYRIAD FORMS // LINKED';
-  const hudSignalMeta = document.createElement('small');
-  hudSignalMeta.textContent = 'GUIDANCE  99.7%';
-  hudSignalCopy.append(hudSignalLabel, hudSignalValue, hudSignalMeta);
-  hudSignal.append(hudSonar, hudSignalCopy);
+  const hudBottom = createXinyuehuOwnedElement('div', 'xinyuehu-theme__hud xinyuehu-theme__hud--bottom');
+  hudBottom.setAttribute('aria-hidden', 'true');
+  const hudBottomMark = document.createElement('i');
+  hudBottomMark.className = 'xinyuehu-theme__hud-mark';
+  hudBottomMark.textContent = '万';
+  const hudBottomCopy = document.createElement('div');
+  hudBottomCopy.className = 'xinyuehu-theme__hud-copy';
+  const hudBottomLabel = document.createElement('span');
+  hudBottomLabel.textContent = 'FRACTAL RESONANCE · ACTIVE';
+  const hudBottomValue = document.createElement('strong');
+  hudBottomValue.textContent = '灯随月转 · 狐影相生';
+  const hudBottomMeta = document.createElement('small');
+  hudBottomMeta.textContent = 'PHASE 07 / SYNC 99.7';
+  hudBottomCopy.append(hudBottomLabel, hudBottomValue, hudBottomMeta);
+  hudBottom.append(hudBottomMark, hudBottomCopy);
 
-  const hudStatus = document.createElement('div');
-  hudStatus.className = 'xinyuehu-theme__hud-status';
-  const hudPulse = document.createElement('i');
-  hudPulse.className = 'xinyuehu-theme__hud-pulse';
-  const hudStatusCopy = document.createElement('div');
-  hudStatusCopy.className = 'xinyuehu-theme__hud-copy';
-  const hudStatusLabel = document.createElement('span');
-  hudStatusLabel.textContent = 'FOX-FIRE LINK';
-  const hudStatusValue = document.createElement('strong');
-  hudStatusValue.textContent = 'MENGZHOU LANTERNS · STABLE';
-  hudStatusCopy.append(hudStatusLabel, hudStatusValue);
-  const hudWave = document.createElement('div');
-  hudWave.className = 'xinyuehu-theme__hud-spectrum';
-  if (fullEffects) {
-    for (let index = 0; index < 8; index += 1) hudWave.append(document.createElement('i'));
-  }
-  hudStatus.append(hudPulse, hudStatusCopy);
-  if (fullEffects) hudStatus.append(hudWave);
-
-  hud.append(hudSignal, hudStatus);
-  if (fullEffects) {
-    const hudFrame = document.createElement('div');
-    hudFrame.className = 'xinyuehu-theme__hud-frame';
-    hudFrame.append(document.createElement('i'), document.createElement('i'));
-    hud.append(hudFrame);
-
-    const hudMotes = document.createElement('div');
-    hudMotes.className = 'xinyuehu-theme__hud-motes';
-    for (let index = 0; index < 8; index += 1) hudMotes.append(document.createElement('i'));
-    hud.append(hudMotes);
-  }
-  body.append(hud);
-
+  body.append(hudTop, hudBottom);
   body.setAttribute(XINYUEHU_BODY_ATTR, '');
   document.title = '鸣潮 · 心月狐 | DeepSeek Harness';
 
   const updateThemeColor = () => {
     const isDark = body.hasAttribute('data-ds-dark-theme');
-    themeColor.setAttribute('content', isDark ? '#171110' : '#eee5d7');
+    themeColor.setAttribute('content', isDark ? '#193026' : '#eeece3');
   };
   updateThemeColor();
 
@@ -212,8 +192,8 @@ function apply(ctx) {
     () => hub.register({
       id: 'wuthering-xinyuehu',
       name: '鸣潮 · 心月狐',
-      tagline: '月照孤城、狐火机关与朱砂墨金',
-      accent: '#c7463f',
+      tagline: '玄方月苑、万相分形与梦州灯影',
+      accent: '#b65045',
       order: 30,
       previewUrl: XINYUEHU_ASSET_POSTER,
       mount: mountXinyuehuTheme,

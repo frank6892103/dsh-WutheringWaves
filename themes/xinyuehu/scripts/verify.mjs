@@ -17,11 +17,12 @@ const hostModule = await import(`${pathToFileURL(join(themeRoot, 'lib/index.js')
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.1.0');
+assert.equal(packageJson.version, '0.3.0');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');
 assert.ok(packageJson.files.includes('assets/xinyuehu-poster.webp'));
+assert.ok(packageJson.files.includes('assets/xinyuehu-character-v2.png'));
 assert.ok(packageJson.files.includes('assets/source.json'));
 assert.ok(packageJson.files.includes('preview'));
 assert.equal(skin.schemaVersion, 1);
@@ -42,10 +43,15 @@ assert.ok(bundle.includes('window.__ModuleLoader__.load'));
 assert.ok(bundle.includes('__DSH_WUTHERING_THEME_HUB__'));
 assert.ok(bundle.includes("id: 'wuthering-xinyuehu'"));
 assert.ok(bundle.includes('mount: mountXinyuehuTheme'));
-assert.ok(bundle.includes('xinyuehu-theme__astrolabe'));
-assert.ok(bundle.includes('xinyuehu-theme__sparks'));
-assert.ok(bundle.includes('xinyuehu-theme__hud-compass'));
-assert.ok(bundle.includes('xinyuehu-theme__hud-spectrum'));
+assert.ok(bundle.includes('xinyuehu-theme__moon-gate'));
+assert.ok(bundle.includes('xinyuehu-theme__folding-screen'));
+assert.ok(bundle.includes('xinyuehu-theme__fractal'));
+assert.ok(bundle.includes('xinyuehu-theme__lanterns'));
+assert.ok(bundle.includes('xinyuehu-theme__hud--top'));
+assert.ok(bundle.includes('xinyuehu-theme__hud--bottom'));
+assert.ok(bundle.includes('xinyuehu-theme__tail-flame'));
+assert.ok(bundle.includes('xinyuehu-theme__fox-sparks'));
+assert.ok(bundle.includes('xinyuehu-character-v2.png'));
 assert.ok(bundle.includes('previousTheme.mount()'));
 assert.ok(bundle.includes('observer.disconnect()'));
 assert.ok(bundle.includes("body.removeAttribute(XINYUEHU_BODY_ATTR)"));
@@ -54,7 +60,7 @@ assert.doesNotMatch(bundle, /;base64,/);
 assert.equal((bundle.match(/\/assets\/xinyuehu-poster\.webp\?rev=[a-f0-9]{12}/g) ?? []).length, 1);
 assert.ok(Buffer.byteLength(bundle) < 100_000, `client bundle is too large: ${Buffer.byteLength(bundle)} bytes`);
 assert.match(hostEntry, /max-age=31536000, immutable/);
-assert.match(hostEntry, /content-type': 'image\/webp'/);
+assert.match(hostEntry, /content-type': asset\.contentType/);
 assert.deepEqual(hostModule.inject, ['webServer']);
 
 let assetRoute;
@@ -82,12 +88,16 @@ const requestAsset = async (method, url) => {
   return response;
 };
 
-const assetResponse = await requestAsset('GET', `${assetRoute.path}/xinyuehu-poster.webp?rev=verify`);
-assert.equal(assetResponse.status, 200);
-assert.equal(assetResponse.headers['content-type'], 'image/webp');
-assert.equal(assetResponse.headers['cache-control'], 'public, max-age=31536000, immutable');
-assert.equal(assetResponse.headers['content-length'], assetResponse.body.length);
-assert.equal(assetResponse.body.subarray(0, 4).toString('ascii'), 'RIFF');
+const posterResponse = await requestAsset('GET', `${assetRoute.path}/xinyuehu-poster.webp?rev=verify`);
+assert.equal(posterResponse.status, 200);
+assert.equal(posterResponse.headers['content-type'], 'image/webp');
+assert.equal(posterResponse.headers['cache-control'], 'public, max-age=31536000, immutable');
+assert.equal(posterResponse.headers['content-length'], posterResponse.body.length);
+assert.equal(posterResponse.body.subarray(0, 4).toString('ascii'), 'RIFF');
+const characterResponse = await requestAsset('GET', `${assetRoute.path}/xinyuehu-character-v2.png?rev=verify`);
+assert.equal(characterResponse.status, 200);
+assert.equal(characterResponse.headers['content-type'], 'image/png');
+assert.equal(characterResponse.body.subarray(1, 4).toString('ascii'), 'PNG');
 assert.equal((await requestAsset('HEAD', `${assetRoute.path}/xinyuehu-poster.webp`)).body, undefined);
 assert.equal((await requestAsset('GET', `${assetRoute.path}/missing.webp`)).status, 404);
 assert.equal((await requestAsset('POST', `${assetRoute.path}/xinyuehu-poster.webp`)).status, 405);
@@ -101,27 +111,39 @@ for (const [, selector, declarations] of sidebarRules) {
 const lightRootRule = themeCss.match(/body\[data-dsh-skin-xinyuehu\]\s*\{([^{}]*)\}/)?.[1] ?? '';
 const lightBaseAlpha = Number(lightRootRule.match(/--dsw-alias-bg-base:\s*rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/)?.[1]);
 assert.ok(lightBaseAlpha <= 0.35, `light theme base layer must reveal the scene (received ${lightBaseAlpha})`);
+const darkRootRule = themeCss.match(/body\[data-dsh-skin-xinyuehu\]\[data-ds-dark-theme\]\s*\{([^{}]*)\}/)?.[1] ?? '';
+const darkBaseAlpha = Number(darkRootRule.match(/--dsw-alias-bg-base:\s*rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/)?.[1]);
+assert.ok(darkBaseAlpha <= 0.32, `dark theme base layer must keep the artwork legible (received ${darkBaseAlpha})`);
+const darkPortraitRule = themeCss.match(/body\[data-ds-dark-theme\]\s+\.xinyuehu-theme__portrait\s*\{([^{}]*)\}/)?.[1] ?? '';
+const darkPortraitOpacity = Number(darkPortraitRule.match(/opacity:\s*([\d.]+)/)?.[1]);
+const darkPortraitBrightness = Number(darkPortraitRule.match(/brightness\(([\d.]+)\)/)?.[1]);
+assert.ok(darkPortraitOpacity >= 0.8, `dark portrait opacity is too low (${darkPortraitOpacity})`);
+assert.ok(darkPortraitBrightness >= 1, `dark portrait brightness is too low (${darkPortraitBrightness})`);
 assert.match(themeCss, /body\[data-dsh-skin-xinyuehu\]\[data-ds-dark-theme\]/);
-assert.match(themeCss, /xinyuehu-theme__foxfire/);
-assert.match(themeCss, /@keyframes xinyuehu-sheen/);
-assert.match(themeCss, /@keyframes xinyuehu-glint/);
-assert.match(themeCss, /@keyframes xinyuehu-compass/);
+assert.match(themeCss, /xinyuehu-theme__moon-gate/);
+assert.match(themeCss, /@keyframes xinyuehu-gate-turn/);
+assert.match(themeCss, /@keyframes xinyuehu-fractal-bloom/);
+assert.match(themeCss, /@keyframes xinyuehu-lantern-walk/);
+assert.match(themeCss, /@keyframes xinyuehu-lantern-guide/);
+assert.match(themeCss, /@keyframes xinyuehu-portrait-breathe/);
+assert.match(themeCss, /@keyframes xinyuehu-tail-flame/);
+assert.match(themeCss, /@keyframes xinyuehu-fox-spark/);
+assert.match(themeCss, /@keyframes xinyuehu-hud-scan/);
 assert.match(themeCss, /prefers-reduced-motion: reduce/);
 assert.match(themeCss, /data-dsh-wuthering-performance='economy'/);
 assert.match(themeCss, /\[data-composer-card\]/);
 assert.match(themeCss, /aria-label='Send message'/);
 assert.match(themeCss, /contain: strict/);
 assert.match(themeCss, /animation: none !important/);
-assert.match(themeRuntime, /fullEffects \? 5 : 2/);
-assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*xinyuehu-theme__motes/);
-assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*xinyuehu-theme__sparks/);
-assert.match(themeRuntime, /if \(fullEffects\) \{[\s\S]*xinyuehu-theme__hud-motes/);
-assert.match(themeCss, /data-dsh-wuthering-performance='full'[^{}]*\.xinyuehu-theme__hud::before/);
-assert.match(themeCss, /@keyframes xinyuehu-hud-scan/);
-assert.match(themeCss, /\.xinyuehu-theme__hud-motes i[\s\S]*animation: xinyuehu-hud-mote/);
+assert.match(themeRuntime, /fullEffects \? 6 : 3/);
+assert.match(themeRuntime, /fullEffects \? 9 : 4/);
+assert.match(themeRuntime, /appendRepeated\(foldingScreen, 'i', 4\)/);
+assert.match(themeRuntime, /xinyuehu-theme__hud--top/);
+assert.match(themeRuntime, /xinyuehu-theme__hud--bottom/);
+assert.doesNotMatch(themeCss, /xinyuehu-theme__astrolabe/);
 assert.match(
   themeCss,
-  /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.xinyuehu-theme__hud-motes i/,
+  /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.xinyuehu-theme__lanterns i/,
   'the visible full-effects layer must respect reduced motion',
 );
 for (const selector of themeCss.match(/[^{}]*:has\([^{}]+/g) ?? []) {
@@ -133,6 +155,10 @@ assert.ok(poster.length > 100_000);
 assert.equal(poster.subarray(0, 4).toString('ascii'), 'RIFF');
 assert.equal(poster.subarray(8, 12).toString('ascii'), 'WEBP');
 assert.match(sources.assets[0].url, /^https:\/\/cdn\.ourplay\.net\//);
+const character = await readFile(join(themeRoot, 'assets/xinyuehu-character-v2.png'));
+assert.ok(character.length > 500_000);
+assert.equal(character.subarray(1, 4).toString('ascii'), 'PNG');
+assert.equal(character[25], 6, 'character PNG must preserve a real RGBA alpha channel');
 
 for (const previewPath of Object.values(skin.preview)) {
   const preview = await readFile(join(themeRoot, previewPath));
@@ -141,4 +167,4 @@ for (const previewPath of Object.values(skin.preview)) {
   assert.equal(preview.subarray(8, 12).toString('ascii'), 'WEBP');
 }
 
-console.log(`Verified ${skin.name}: bundle ${bundle.length.toLocaleString()} chars, 1 local WebP asset`);
+console.log(`Verified ${skin.name}: bundle ${bundle.length.toLocaleString()} chars, 1 WebP + 1 transparent PNG`);

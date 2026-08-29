@@ -1,10 +1,11 @@
+from math import cos, pi, sin
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
-POSTER = Image.open(ROOT / "assets" / "xinyuehu-poster.webp").convert("RGB")
+CHARACTER = Image.open(ROOT / "assets" / "xinyuehu-character-v2.png").convert("RGBA")
 FONT_PATH = Path(r"C:\Windows\Fonts\msyh.ttc")
 
 
@@ -16,111 +17,147 @@ def font(size: int, bold: bool = False):
         return ImageFont.load_default()
 
 
-def gradient(size, start, end):
+def vertical_gradient(size, start, end):
     width, height = size
     image = Image.new("RGB", size)
-    pixels = image.load()
+    draw = ImageDraw.Draw(image)
     for y in range(height):
-        vertical = y / max(height - 1, 1)
-        for x in range(width):
-            horizontal = x / max(width - 1, 1)
-            ratio = min(1, horizontal * .72 + vertical * .28)
-            pixels[x, y] = tuple(round(a + (b - a) * ratio) for a, b in zip(start, end))
+        ratio = y / max(height - 1, 1)
+        color = tuple(round(a + (b - a) * ratio) for a, b in zip(start, end))
+        draw.line((0, y, width, y), fill=color)
     return image
 
 
-def panel(draw, box, fill, outline, radius=18, width=1):
+def round_panel(draw, box, fill, outline, radius=12, width=1):
     draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
 
 
 def make_preview(dark: bool):
     size = (1280, 720)
     if dark:
-        image = gradient(size, (12, 17, 16), (50, 25, 22))
-        ink, muted = (255, 241, 216, 245), (205, 183, 162, 190)
-        glass, glass_strong = (29, 23, 21, 205), (48, 33, 29, 220)
-        border, red, jade = (229, 117, 99, 74), (239, 117, 104, 255), (105, 199, 181, 255)
-        moon = (244, 202, 133, 34)
+        image = vertical_gradient(size, (25, 48, 38), (18, 37, 29))
+        ink, muted = (234, 231, 220, 245), (168, 176, 169, 215)
+        paper, paper_high = (27, 45, 36, 248), (43, 67, 55, 246)
+        line, red, jade, moon = (166, 198, 183, 56), (227, 130, 115, 255), (135, 181, 163, 255), (216, 200, 155, 178)
+        terrace = (23, 44, 35, 255)
+        portrait_saturation, portrait_brightness, portrait_alpha = 1.06, 1.02, 250
     else:
-        image = gradient(size, (242, 235, 221), (185, 158, 134))
-        ink, muted = (45, 37, 32, 245), (102, 87, 75, 210)
-        glass, glass_strong = (250, 245, 234, 194), (255, 251, 242, 220)
-        border, red, jade = (151, 72, 52, 70), (180, 59, 49, 255), (47, 129, 116, 255)
-        moon = (255, 246, 209, 120)
+        image = vertical_gradient(size, (244, 241, 232), (224, 232, 224))
+        ink, muted = (48, 54, 50, 245), (103, 113, 106, 220)
+        paper, paper_high = (238, 236, 227, 250), (251, 248, 239, 248)
+        line, red, jade, moon = (64, 79, 70, 52), (182, 80, 69, 255), (79, 134, 117, 255), (229, 213, 159, 196)
+        terrace = (218, 228, 219, 255)
+        portrait_saturation, portrait_brightness, portrait_alpha = 1.0, 1.03, 232
 
     image = image.convert("RGBA")
     draw = ImageDraw.Draw(image, "RGBA")
 
-    draw.ellipse((710, -310, 1340, 320), fill=moon, outline=border, width=2)
-    for radius in (105, 165, 225):
-        draw.ellipse((1020-radius, 5-radius, 1020+radius, 5+radius), outline=(*red[:3], 24), width=1)
-    for offset in range(-720, 1440, 44):
-        draw.line((offset, 0, offset + 720, 720), fill=(*red[:3], 12), width=1)
-        draw.line((offset + 720, 0, offset, 720), fill=(*jade[:3], 10), width=1)
+    # A quiet architectural base keeps the interface grounded without a color jump.
+    draw.polygon(((280, 636), (470, 612), (870, 620), (1020, 720), (280, 720)), fill=terrace)
+    draw.line((354, 0, 354, 720), fill=line, width=1)
+    draw.line((365, 0, 365, 720), fill=(255, 255, 255, 24), width=1)
 
-    portrait = POSTER.resize((405, 720), Image.Resampling.LANCZOS)
-    portrait = ImageEnhance.Color(portrait).enhance(.82 if dark else .9).convert("RGBA")
-    if dark:
-        portrait = ImageEnhance.Brightness(portrait).enhance(.64)
-    alpha = Image.new("L", portrait.size)
-    alpha_pixels = alpha.load()
-    for y in range(alpha.height):
-        for x in range(alpha.width):
-            horizontal = max(0, min(1, (x - 5) / 150))
-            vertical = max(0, min(1, (720 - y) / 120))
-            alpha_pixels[x, y] = round(118 * horizontal * vertical)
-    portrait.putalpha(alpha.filter(ImageFilter.GaussianBlur(5)))
-    image.alpha_composite(portrait, (875, 0))
+    # Moon gate and the six-fold mechanism sit left of the product UI.
+    gate_center = (405, 355)
+    for radius, color in ((254, (*jade[:3], 54)), (225, (*red[:3], 68)), (190, (*jade[:3], 42))):
+        draw.ellipse((gate_center[0] - radius, gate_center[1] - radius, gate_center[0] + radius, gate_center[1] + radius), outline=color, width=1)
+    draw.ellipse((260, 188, 398, 326), fill=moon)
+    for index in range(6):
+        angle = index * pi / 3 - pi / 2
+        x = gate_center[0] + cos(angle) * 108
+        y = gate_center[1] + sin(angle) * 108
+        diamond = ((x, y - 9), (x + 7, y), (x, y + 9), (x - 7, y))
+        draw.polygon(diamond, fill=(*paper_high[:3], 190), outline=red)
+    draw.rectangle((386, 336, 424, 374), outline=(*red[:3], 145), width=1)
+    draw.ellipse((399, 349, 411, 361), fill=(*jade[:3], 170))
 
-    panel(draw, (18, 18, 246, 702), glass, border, 22)
-    draw.text((38, 38), "鸣潮 · 心月狐", font=font(21, True), fill=ink)
-    draw.text((38, 70), "MOONLIT HEART", font=font(10), fill=muted)
-    draw.line((38, 98, 220, 98), fill=border, width=1)
+    # A four-panel moon screen sits behind a genuinely separate transparent character layer.
+    arch_box = (874, 28, 1262, 692)
+    round_panel(draw, arch_box, (*paper[:3], 80), (*line[:3], 110), 34)
+    for index in range(1, 4):
+        x = arch_box[0] + index * 97
+        draw.line((x, 72, x, 666), fill=(*line[:3], 72), width=1)
 
-    nav_items = ("新对话", "工作区", "轨迹", "主题中心")
-    for index, label in enumerate(nav_items):
-        top = 126 + index * 54
-        active = index == 0
-        panel(draw, (32, top, 232, top + 42), (*red[:3], 30) if active else (0, 0, 0, 0), (*red[:3], 70) if active else (0, 0, 0, 0), 11)
-        draw.ellipse((45, top + 14, 55, top + 24), fill=red if active else muted)
-        draw.text((68, top + 10), label, font=font(15), fill=ink if active else muted)
-    draw.text((38, 650), "省资源模式", font=font(12), fill=jade)
-    draw.text((38, 674), "多套主题互斥切换", font=font(11), fill=muted)
+    draw.ellipse((858, 128, 1275, 556), fill=(*moon[:3], 34), outline=(*red[:3], 78), width=1)
+    portrait = ImageOps.contain(CHARACTER, (430, 714), Image.Resampling.LANCZOS)
+    portrait = ImageEnhance.Color(portrait).enhance(portrait_saturation)
+    portrait = ImageEnhance.Brightness(portrait).enhance(portrait_brightness)
+    portrait_alpha_channel = portrait.getchannel("A").point(lambda alpha: round(alpha * portrait_alpha / 255))
+    portrait.putalpha(portrait_alpha_channel)
+    image.alpha_composite(portrait, (848, 4))
+    draw.rounded_rectangle(arch_box, radius=34, outline=(*red[:3], 72), width=1)
 
-    draw.text((294, 40), "朝月清辉照孤城", font=font(30, True), fill=ink)
-    draw.text((296, 84), "万相分形已连接 · 梦州灯火长明", font=font(13), fill=muted)
+    # Solid paper sidebar and composer replace the neon/glass language.
+    draw.rectangle((0, 0, 280, 720), fill=paper, outline=line, width=1)
+    draw.text((18, 25), "◈  deepseek", font=font(19, True), fill=ink)
+    draw.text((146, 31), "HARNESS", font=font(8), fill=muted)
+    round_panel(draw, (14, 74, 266, 112), paper_high, line, 11)
+    draw.text((108, 84), "⊕ 新会话", font=font(14), fill=ink)
+    draw.text((16, 133), "工作区", font=font(15), fill=muted)
+    draw.text((199, 133), "⌕  ☷  +", font=font(13), fill=muted)
+    draw.text((20, 174), "▱ dsh", font=font(14), fill=jade)
+    draw.rounded_rectangle((12, 198, 268, 230), radius=7, fill=(*red[:3], 24))
+    draw.rectangle((12, 198, 15, 230), fill=(*red[:3], 160))
+    draw.text((40, 205), "新会话", font=font(14), fill=ink)
+    draw.text((40, 244), "查看 dsh 版本", font=font(13), fill=ink)
+    draw.text((224, 245), "19小时", font=font(10), fill=muted)
+    draw.text((40, 278), "测试 DSH 配置是否正常", font=font(13), fill=ink)
+    draw.text((238, 280), "11天", font=font(10), fill=muted)
+    draw.text((18, 680), "⚙  设置", font=font(13), fill=ink)
 
-    panel(draw, (286, 132, 860, 258), glass, border, 20)
-    draw.ellipse((308, 155, 342, 189), fill=(*jade[:3], 48), outline=jade, width=2)
-    draw.text((360, 151), "如何规划今天的开发任务？", font=font(17, True), fill=ink)
-    draw.text((360, 186), "我会先收敛目标，再拆分实现、验证与交付。", font=font(14), fill=muted)
-    draw.line((360, 222, 700, 222), fill=(*jade[:3], 52), width=2)
+    # Identity uses a small seal and editorial typography.
+    draw.rectangle((320, 58, 356, 94), outline=red, width=1)
+    draw.text((329, 64), "心", font=font(17, True), fill=red)
+    draw.text((370, 58), "心 月 狐", font=font(24, True), fill=ink)
+    draw.text((370, 91), "玄方月苑 · MYRIAD MOON COURT", font=font(8), fill=muted)
 
-    panel(draw, (344, 286, 842, 405), glass_strong, border, 20)
-    draw.text((370, 310), "计划已整理：", font=font(15, True), fill=ink)
-    draw.text((370, 344), "01  主题运行时   02  视觉系统   03  自动验收", font=font(13), fill=muted)
-    draw.rectangle((370, 378, 520, 382), fill=red)
-    draw.rectangle((520, 378, 686, 382), fill=jade)
+    # Complete viewport-safe upper HUD.
+    round_panel(draw, (826, 10, 1128, 54), (*paper_high[:3], 238), (*red[:3], 150), 11)
+    draw.ellipse((839, 17, 869, 47), outline=red, width=1)
+    draw.text((848, 25), "心", font=font(12, True), fill=red)
+    draw.text((882, 17), "MYRIAD MOON COURT · 07", font=font(7, True), fill=red)
+    draw.text((882, 29), "心月狐 · 万相分形", font=font(11, True), fill=ink)
+    draw.text((882, 42), "FOXFIRE LINK // FULL", font=font(6), fill=muted)
 
-    panel(draw, (286, 532, 860, 654), glass_strong, border, 22)
-    draw.text((316, 556), "继续询问…", font=font(15), fill=muted)
-    draw.line((316, 608, 786, 608), fill=border, width=1)
-    draw.ellipse((796, 594, 836, 634), fill=red)
-    draw.polygon(((809, 614), (822, 605), (822, 623)), fill=(255, 248, 232, 255))
+    draw.text((646, 246), "探索未至之境", font=font(29, True), fill=ink)
+    round_panel(draw, (846, 249, 896, 269), (*jade[:3], 34), (*jade[:3], 76), 9)
+    draw.text((853, 252), "预览版", font=font(9), fill=jade)
+    draw.text((398, 302), "▱ dsh   ⌄     ♧ 标准模式", font=font(12), fill=ink)
 
-    panel(draw, (1002, 26, 1254, 105), (*glass_strong[:3], 214), border, 12)
-    draw.ellipse((1018, 42, 1068, 92), outline=red, width=2)
-    draw.ellipse((1030, 54, 1056, 80), outline=jade, width=1)
-    draw.text((1081, 44), "LUNAR FRACTAL", font=font(9), fill=muted)
-    draw.text((1081, 62), "MYRIAD FORMS", font=font(11, True), fill=red)
-    draw.text((1081, 82), "LINKED 99.7%", font=font(9), fill=jade)
+    round_panel(draw, (386, 332, 1165, 450), paper_high, (*line[:3], 115), 12)
+    draw.rectangle((386, 332, 389, 450), fill=(*red[:3], 185))
+    draw.text((403, 351), "描述你想要构建的内容", font=font(15), fill=muted)
+    draw.text((402, 413), "+", font=font(20), fill=ink)
+    draw.text((448, 417), "♧ Workspace Write⌄", font=font(11), fill=ink)
+    draw.text((948, 417), "DeepSeek-V4-Flash Max⌄", font=font(11), fill=ink)
+    draw.ellipse((1118, 403, 1153, 438), fill=red)
+    draw.polygon(((1135, 412), (1127, 422), (1143, 422)), fill=(255, 248, 239, 255))
 
-    draw.text((300, 683), "XIN · 心   /   朝月清辉 · MOONLIT HEART", font=font(11), fill=muted)
+    # Lantern procession and complete lower HUD.
+    draw.arc((450, 570, 1020, 760), 190, 340, fill=(*red[:3], 72), width=1)
+    for index in range(8):
+        x = 478 + index * 67
+        y = 628 - round(sin(index / 7 * pi) * 28)
+        draw.line((x + 4, y - 5, x + 4, y), fill=(*red[:3], 135), width=1)
+        draw.rounded_rectangle((x, y, x + 9, y + 11), radius=3, fill=(*moon[:3], 175), outline=red, width=1)
+        draw.line((x + 4, y + 11, x + 4, y + 18), fill=(*red[:3], 135), width=1)
+
+    round_panel(draw, (984, 585, 1252, 641), (*paper[:3], 232), (*red[:3], 145), 12)
+    draw.ellipse((997, 597, 1027, 627), outline=red, width=1)
+    draw.text((1006, 605), "万", font=font(12, True), fill=red)
+    draw.text((1040, 593), "FRACTAL RESONANCE · ACTIVE", font=font(7), fill=red)
+    draw.text((1040, 607), "灯随月转 · 狐影相生", font=font(11, True), fill=ink)
+    draw.text((1040, 623), "PHASE 07 / SYNC 99.7", font=font(6), fill=muted)
+
+    round_panel(draw, (984, 652, 1252, 710), (25, 52, 40, 245), (*red[:3], 180), 14)
+    draw.ellipse((998, 665, 1029, 696), outline=red, width=1)
+    draw.text((1040, 660), "MYRIAD THEME // FOXFIRE 07", font=font(7), fill=moon)
+    draw.text((1040, 679), "鸣潮 · 心月狐", font=font(12, True), fill=(255, 249, 239, 255))
     return image.convert("RGB")
 
 
 for mode in ("light", "dark"):
     output = ROOT / "preview" / f"{mode}.webp"
     output.parent.mkdir(parents=True, exist_ok=True)
-    make_preview(mode == "dark").save(output, "WEBP", quality=88, method=6)
+    make_preview(mode == "dark").save(output, "WEBP", quality=89, method=6)
     print(output)
