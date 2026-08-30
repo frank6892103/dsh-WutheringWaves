@@ -31,6 +31,16 @@ node scripts/verify.mjs
 
 ## 安装
 
+远端（[GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)）：
+
+```powershell
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+```
+
+本地 `.tgz`（下载 Release 或执行 `pnpm run themes:release`）：
+
 ```powershell
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
 dsh --profile web --dump-config

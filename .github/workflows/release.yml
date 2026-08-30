@@ -1,0 +1,56 @@
+name: GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify themes
+        run: pnpm run themes:test
+
+      - name: Pack theme tarballs
+        run: pnpm run themes:release
+
+      - name: Check tag matches collection version
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "v${VERSION}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version v${VERSION}"
+            exit 1
+          fi
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            release/*.tgz \
+            release/THEME-SHA256SUMS.txt \
+            release/theme-release.json \
+            release/INSTALL-THEMES.md \
+            --title "${GITHUB_REF_NAME}" \
+            --notes-file release/RELEASE-NOTES.md

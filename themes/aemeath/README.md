@@ -30,13 +30,15 @@ node scripts/verify.mjs
 
 ## 分发包安装
 
-发布者在仓库根目录执行：
+正式包按集合版本发布在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)。远端：
 
 ```powershell
-pnpm run theme:aemeath:release
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
 ```
 
-命令会重建并校验主题，然后在 `release/` 生成 `.tgz`、`SHA256SUMS.txt`、`release.json` 和接收方安装说明 `INSTALL.md`。接收方在这些文件所在目录执行：
+发布者在仓库根目录执行 `pnpm run theme:aemeath:release` 或 `pnpm run themes:release` 后，也可本地安装：
 
 ```powershell
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
@@ -44,7 +46,7 @@ dsh --profile web --dump-config
 dsh web
 ```
 
-组合配置中应出现 `ui-skin-wuthering-aemeath`。如 Web 服务已经运行，请先停止后重新启动。
+组合配置中应出现 `ui-skin-wuthering-aemeath`。如 Web 服务已经运行，请先停止后重新启动。若目标是 DSH GUI，请使用 `dsh plugin`。
 
 ## 卸载与恢复
 

@@ -1,8 +1,13 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
+import { GITHUB_REPOSITORY, collectionTag } from './release-meta.mjs';
 
 const repoRoot = resolve(import.meta.dirname, '..');
+const rootPackage = JSON.parse(await readFile(join(repoRoot, 'package.json'), 'utf8'));
+assert.match(rootPackage.repository.url, new RegExp(GITHUB_REPOSITORY.replaceAll('/', '\\/')));
+assert.match(rootPackage.version, /^\d+\.\d+\.\d+$/);
+assert.equal(collectionTag(rootPackage.version), `v${rootPackage.version}`);
 const registry = JSON.parse(await readFile(join(repoRoot, 'theme-registry.json'), 'utf8'));
 const hubRuntime = await readFile(join(repoRoot, 'shared', 'theme-hub-runtime.js'), 'utf8');
 

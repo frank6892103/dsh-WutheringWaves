@@ -4,6 +4,7 @@
 
 <p>
   <img alt="主题数量" src="https://img.shields.io/badge/themes-6-7c3aed" />
+  <img alt="集合版本" src="https://img.shields.io/github/v/release/frank6892103/dsh-WutheringWaves?label=release" />
   <img alt="代码许可" src="https://img.shields.io/badge/code%20license-MIT-1d4ed8" />
   <img alt="DSH 版本" src="https://img.shields.io/badge/DSH-0.1.1--rc.2-059669" />
   <img alt="默认性能" src="https://img.shields.io/badge/performance-economy%20by%20default-0ea5e9" />
@@ -54,9 +55,41 @@
 
 ## 安装
 
-需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.1.1-rc.2` 上验证。
+需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.1.1-rc.2` 上验证。主题包不发布到 npm；可安装产物在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)，按集合版本号（如 `v0.5.0`）浏览。
 
-分发包在仓库 [`release/`](release/) 目录（不发布到 npm）。下载对应 `.tgz` 后，在该目录执行：
+`dsh plugin` 会把参数交给 pnpm。同一 `.tgz` 也可用 `pnpm add` 或 `npm install` 从远端 URL 或本地文件安装；若目标是 DSH GUI，请使用 `dsh plugin`。
+
+### 从 GitHub Release 安装
+
+钉死当前集合版本：
+
+```powershell
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
+dsh --profile web --dump-config
+dsh web
+```
+
+跟随最新 Release（文件名不含主题版本号）：
+
+```powershell
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/latest/download/dsh-external-dsh-client-ui-skin-wuthering-aemeath.tgz
+```
+
+包管理器等价命令（同一 URL）：
+
+```powershell
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+```
+
+### 从本地文件安装
+
+从 [Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases) 下载 `.tgz`，或在克隆的仓库根目录执行 `pnpm run themes:release` 后，在该目录执行：
 
 ```powershell
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
@@ -67,6 +100,11 @@ dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-threebody-zhangbe
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
 dsh --profile web --dump-config
 dsh web
+```
+
+```powershell
+pnpm add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+npm install ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
 ```
 
 不必一次装完；只装需要的主题即可。组合配置中应出现对应的 `ui-skin-*` 行。若 Web 服务已在运行，请先停止再启动。
@@ -119,6 +157,7 @@ pnpm install
 pnpm run themes:build
 pnpm run themes:test
 pnpm run themes:release
+pnpm run github:release
 pnpm run web
 ```
 
@@ -127,6 +166,7 @@ pnpm run web
 | `pnpm run themes:build` | 构建全部六个主题的 client bundle |
 | `pnpm run themes:test` | 校验注册表、主题中心协议与各主题一致性 |
 | `pnpm run themes:release` | 在 `release/` 生成 `.tgz`、校验和与安装说明（不发布 npm） |
+| `pnpm run github:release` | 打包后用 GitHub CLI 创建 `v*` Release（需已登录 `gh`；日常发版请推送标签由 Actions 完成） |
 | `pnpm run theme:<id>:build` | 构建单个主题，`id` 为 `aemeath` / `cantarella` / `xinyuehu` / `qingxiao` / `zhangbeihai` / `ronova` |
 | `pnpm run web` | 启动本地 DSH Web |
 
@@ -147,7 +187,7 @@ dsh-WutheringWaves/
 ├── shared/theme-hub-runtime.js
 ├── theme-registry.json     # 可安装主题与切换协议
 ├── scripts/                # 联合校验与发布
-├── release/                # 可直接安装的离线包
+├── release/                # 安装说明与校验清单；`.tgz` 由打包脚本生成，正式包在 GitHub Release
 └── docs/                   # 需求规格
 ```
 
@@ -178,3 +218,4 @@ dsh-WutheringWaves/
 - [spec007 · 清宵主题](docs/spec007-鸣潮清宵主题.md)
 - [spec008 · 章北海主题](docs/spec008-三体章北海主题.md)
 - [spec009 · 若娜瓦主题](docs/spec009-原神若娜瓦主题.md)
+- [spec010 · GitHub Release 发布](docs/spec010-GitHub的release发布.md)
