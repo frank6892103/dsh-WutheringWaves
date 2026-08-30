@@ -62,10 +62,10 @@
       "id": "genshin-ronova",
       "name": "原神 · 若娜瓦",
       "package": "@dsh-external/dsh-client-ui-skin-genshin-ronova",
-      "version": "0.2.1",
-      "archive": "dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.1.tgz",
-      "size": 2578744,
-      "sha256": "aa6dff56b49d484dc16e1efcb04a25b7ceb37e407dfd3b34e7667c8d50ba6757"
+      "version": "0.2.2",
+      "archive": "dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz",
+      "size": 2578913,
+      "sha256": "61bc90f308583fdfd4eb9d5be91dec9877f06942afdf83e615ba0e8d514d60b2"
     }
   ]
 }

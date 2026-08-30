@@ -19,7 +19,7 @@ dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantare
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
 dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
 dsh --profile web --dump-config
 dsh web
 ```
