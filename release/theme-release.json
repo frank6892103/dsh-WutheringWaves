@@ -57,6 +57,15 @@
       "archive": "dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz",
       "size": 3062259,
       "sha256": "cc0f09bce3bb89fa7b13f23ecd24d356a43b124838a10149476a6ae2f2bd5ac0"
+    },
+    {
+      "id": "genshin-ronova",
+      "name": "原神 · 若娜瓦",
+      "package": "@dsh-external/dsh-client-ui-skin-genshin-ronova",
+      "version": "0.2.1",
+      "archive": "dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.1.tgz",
+      "size": 2578744,
+      "sha256": "aa6dff56b49d484dc16e1efcb04a25b7ceb37e407dfd3b34e7667c8d50ba6757"
     }
   ]
 }

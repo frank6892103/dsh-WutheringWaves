@@ -3,3 +3,4 @@ f1b5b846cdb7e0ee3dec72acf37d1d72cf705eeeea168eab74e4c7fd49b41dd1  dsh-external-d
 caef187257730b5e15f65e674c93c56172b30203ca9c806a4750573ed7ca6e0e  dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
 a664b8876bda6cd5e67498339dfe87eede112fa882f12658c3cfd292962c6f63  dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
 cc0f09bce3bb89fa7b13f23ecd24d356a43b124838a10149476a6ae2f2bd5ac0  dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
+aa6dff56b49d484dc16e1efcb04a25b7ceb37e407dfd3b34e7667c8d50ba6757  dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.1.tgz

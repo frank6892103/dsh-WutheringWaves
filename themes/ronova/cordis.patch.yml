@@ -1,0 +1,4 @@
+- insert:
+    - id: ui-skin-genshin-ronova
+      name: '@dsh-external/dsh-client-ui-skin-genshin-ronova'
+

@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-08-29",
+  "generator": "OpenAI built-in image generation",
+  "usage": "Non-commercial local fan-made UI theme",
+  "officialReference": "https://www.youtube.com/watch?v=jvXVmvW8ZQw",
+  "assets": [
+    {
+      "file": "ronova-sanctuary.webp",
+      "role": "16:9 environment plate, viewport background, and selector preview",
+      "provenance": "AI-generated original fan-art environment; the official Genshin Impact interlude teaser was used only to verify Ronova's title and recurring visual symbols",
+      "promptSummary": "Empty divine underworld sanctuary, monumental crimson eclipse, obsidian judgment gate, pale ley-line roots, quiet left-side negative space; no character, text, logo, or watermark"
+    },
+    {
+      "file": "ronova-character.png",
+      "sourceFile": "ronova-character-source.png",
+      "role": "transparent full-body foreground character layer",
+      "provenance": "AI-generated original Ronova fan-art render. The generated checkerboard source was converted to a verified RGBA matte with scripts/extract-character-alpha.py using edge-connected neutral-background detection and edge color decontamination",
+      "promptSummary": "Regal white-haired Ruler of Death, black and bone ceremonial dress, crown halo, six crimson-black feathered eye-wings, full-body clean silhouette, no props, text, logo, or watermark"
+    }
+  ]
+}

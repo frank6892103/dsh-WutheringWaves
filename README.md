@@ -9,6 +9,7 @@ DeepSeek Harness Web GUI 的可替换角色主题集合，最初以《鸣潮》�
 - `鸣潮 · 心月狐`：`themes/xinyuehu`
 - `鸣潮 · 清宵`：`themes/qingxiao`
 - `三体 · 章北海`：`themes/zhangbeihai`
+- `原神 · 若娜瓦`：`themes/ronova`
 
 需求规格：
 
@@ -21,6 +22,7 @@ DeepSeek Harness Web GUI 的可替换角色主题集合，最初以《鸣潮》�
 - [spec006：鸣潮心月狐主题](docs/spec006-鸣潮心月狐主题.md)
 - [spec007：鸣潮清宵主题](docs/spec007-鸣潮清宵主题.md)
 - [spec008：三体章北海主题](docs/spec008-三体章北海主题.md)
+- [spec009：原神若娜瓦主题](docs/spec009-原神若娜瓦主题.md)
 
 每个主题都是独立的 DSH 客户端皮肤包，拥有自己的 `skin.json`、Cordis patch、构建产物和清理逻辑。多个主题包可以同时安装；页面右下角的“主题中心”负责互斥切换，并把选择保存在当前 DSH 站点。选择“官方外观”或禁用全部主题包后，页面会恢复原始样式。
 
@@ -39,12 +41,14 @@ pnpm run theme:qingxiao:build
 pnpm run theme:qingxiao:test
 pnpm run theme:zhangbeihai:build
 pnpm run theme:zhangbeihai:test
+pnpm run theme:ronova:build
+pnpm run theme:ronova:test
 pnpm run themes:build
 pnpm run themes:test
 pnpm run themes:release
 pnpm run web
 ```
 
-`themes:release` 会在 `release/` 同时生成五套可直接交付的 DSH 插件 `.tgz`、联合 SHA-256 校验和、机器可读发布清单和安装说明。该流程不会发布到 npm。
+`themes:release` 会在 `release/` 同时生成六套可直接交付的 DSH 插件 `.tgz`、联合 SHA-256 校验和、机器可读发布清单和安装说明。该流程不会发布到 npm。
 
-主题素材来源、用途说明和版权边界分别见 [`themes/aemeath/NOTICE`](themes/aemeath/NOTICE)、[`themes/cantarella/NOTICE`](themes/cantarella/NOTICE)、[`themes/xinyuehu/NOTICE`](themes/xinyuehu/NOTICE)、[`themes/qingxiao/NOTICE`](themes/qingxiao/NOTICE) 与 [`themes/zhangbeihai/NOTICE`](themes/zhangbeihai/NOTICE)。
+主题素材来源、用途说明和版权边界分别见 [`themes/aemeath/NOTICE`](themes/aemeath/NOTICE)、[`themes/cantarella/NOTICE`](themes/cantarella/NOTICE)、[`themes/xinyuehu/NOTICE`](themes/xinyuehu/NOTICE)、[`themes/qingxiao/NOTICE`](themes/qingxiao/NOTICE)、[`themes/zhangbeihai/NOTICE`](themes/zhangbeihai/NOTICE) 与 [`themes/ronova/NOTICE`](themes/ronova/NOTICE)。

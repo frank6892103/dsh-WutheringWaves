@@ -57,6 +57,15 @@
       "bodyAttr": "data-dsh-skin-zhangbeihai",
       "order": 50,
       "enabledByDefault": false
+    },
+    {
+      "id": "genshin-ronova",
+      "name": "原神 · 若娜瓦",
+      "package": "@dsh-external/dsh-client-ui-skin-genshin-ronova",
+      "path": "themes/ronova",
+      "bodyAttr": "data-dsh-skin-ronova",
+      "order": 60,
+      "enabledByDefault": false
     }
   ]
 }

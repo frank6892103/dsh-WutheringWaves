@@ -1,0 +1,16 @@
+原神 · 若娜瓦 DSH 主题素材说明
+
+本主题是非官方、非商业、本地使用的玩家创作，与米哈游、HoYoverse 或《原神》运营方不存在隶属、赞助或官方合作关系。
+
+本包原创程序代码依据 MIT License 分发，见 LICENSE-CODE。MIT License 仅适用于程序代码，不适用于若娜瓦角色设定、相关美术素材、预览图或包含这些素材的构建产物。
+
+《原神》、若娜瓦及相关角色、名称、视觉设定的著作权和商标权归其各自权利人所有。本主题仅在 DeepSeek Harness 本地界面中作为非商业同人作品呈现，不授予素材的商业使用许可。
+
+`ronova-sanctuary.webp` 和 `ronova-character.png` 均由 OpenAI 内置图像生成工具为本项目生成。人物图为原创同人诠释，不是从游戏截图、PV 帧或第三方插画中裁切；生成出的棋盘格底图通过 `scripts/extract-character-alpha.py` 确定性转换为真 Alpha PNG。完整生成摘要、派生关系和创建日期记录在 `assets/source.json`。
+
+用于核对角色称号与公开视觉符号的官方参考：
+
+1. Genshin Impact 官方 YouTube：Teyvat Chapter Interlude Teaser: The Gods' Limits
+   https://www.youtube.com/watch?v=jvXVmvW8ZQw
+
+角色与官方作品的权利边界不因本项目中的技术处理、压缩或打包而改变。

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "genshin-ronova",
+  "name": "原神 · 若娜瓦",
+  "nameEn": "Genshin Impact · Ronova",
+  "author": "dsh-WutheringWaves contributors",
+  "tagline": "赤月终焉、六翼神瞳与死生律令",
+  "description": "以赤月、黑曜神门、六翼神瞳与灵魂渡界为视觉意象，为 DeepSeek Harness Web GUI 提供亮暗自适应的若娜瓦主题。",
+  "tags": [
+    "fanwork",
+    "genshin-impact",
+    "ronova",
+    "ruler-of-death",
+    "crimson-eclipse",
+    "divine-edict"
+  ],
+  "accent": "#c54845",
+  "bodyAttr": "data-dsh-skin-ronova",
+  "package": "@dsh-external/dsh-client-ui-skin-genshin-ronova",
+  "wiring": {
+    "id": "ui-skin-genshin-ronova",
+    "bundleWired": true
+  },
+  "preview": {
+    "light": "preview/light.webp",
+    "dark": "preview/dark.webp"
+  },
+  "license": {
+    "code": "MIT",
+    "assets": "SEE-NOTICE",
+    "commercialUse": false
+  },
+  "order": 60,
+  "appearance": ["light", "dark"],
+  "assetsEmbedded": false
+}
+
