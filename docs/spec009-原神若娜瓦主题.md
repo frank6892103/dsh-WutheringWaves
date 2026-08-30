@@ -1,6 +1,6 @@
 # spec009：原神若娜瓦主题
 
-> 状态：v0.2.1 已完成主题实现、立绘主视觉重构、真 Alpha 人物分层、双性能档、联合构建校验、发布打包与 DSH web profile 实机验收
+> 状态：v0.2.2 已完成主题实现、立绘主视觉重构、输入区双外观可读性修复、真 Alpha 人物分层、双性能档、联合构建校验、发布打包与 DSH web profile 实机验收
 > 完成日期：2026-08-29
 > 目标环境：`@deepseek-ai/dsh@0.1.1-rc.2`
 > 主题 ID：`genshin-ronova`
@@ -190,7 +190,7 @@ DSH content
 - [x] 人物为 `1024 × 1536`、PNG color type 6 的 RGBA 文件，不是矩形海报。
 - [x] 背景与人物分别通过带 revision 的插件本地路由加载。
 - [x] GET、HEAD、404、405、MIME、长度和一年不可变缓存均通过自动校验。
-- [x] 客户端 bundle 为 63,653 bytes，低于 100,000 bytes 上限。
+- [x] 客户端 bundle 为 64,520 bytes，低于 100,000 bytes 上限。
 - [x] `economy` 不创建灵魂微光、律令环阵和前景裂隙，并停止持续动画。
 - [x] `full` 创建人物关联动效、场景动效和三块 HUD 扫描联动。
 - [x] `prefers-reduced-motion` 停止全部主题动画。
@@ -207,12 +207,19 @@ DSH content
 - [x] 主题面板隐藏时人物舞台透明度实测为 `1`（1920×960）/ `0.9`（806×856），面板展开时才降至 `0.68`。
 - [x] 正式安装到 DSH `web` profile，已安装 bundle 与源码 bundle 的 SHA-256 一致，页面和人物资源均返回 HTTP 200。
 
+### v0.2.2 输入区可读性修复
+
+- [x] 移除主题直接施加在 `textarea` 上的不透明背景，恢复 DSH 的“透明输入层 + 文字背板”原生渲染结构。
+- [x] 浅色文字背板使用 `#3a252b`，占位符使用 `#806d73`，光标使用 `#a93439`。
+- [x] 深色文字背板使用 `#fff1eb`，占位符使用 `#c7b4b1`，光标使用 `#f17b69`。
+- [x] 浅色、深色均使用实际输入文本完成浏览器实机验收，测试文字在验收后已清空。
+
 ## 9. 发布
 
-- 版本：`0.2.1`
-- 发布包：`release/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.1.tgz`
-- 包大小：`2,578,744` bytes
-- SHA-256：`aa6dff56b49d484dc16e1efcb04a25b7ceb37e407dfd3b34e7667c8d50ba6757`
+- 版本：`0.2.2`
+- 发布包：`release/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz`
+- 包大小：`2,578,913` bytes
+- SHA-256：`61bc90f308583fdfd4eb9d5be91dec9877f06942afdf83e615ba0e8d514d60b2`
 - 发布包只包含正式 WebP/PNG，不包含 `ronova-character-source.png` 或处理脚本。
 
 验收命令：
