@@ -37,7 +37,7 @@ await writeFile(join(releaseDir, 'release.json'), `${JSON.stringify({
   archive: archiveName,
   size: archive.length,
   sha256,
-  testedWith: '@deepseek-ai/dsh@0.1.1-rc.2',
+  testedWith: '@deepseek-ai/dsh@0.2.2-rc.1',
 }, null, 2)}\n`, 'utf8');
 
 const installGuide = `# 原神 · 若娜瓦 DSH 主题安装

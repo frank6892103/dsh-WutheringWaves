@@ -98,7 +98,7 @@ const manifest = {
     defaultPerformance: 'economy',
     performanceModes: ['economy', 'full'],
   },
-  testedWith: '@deepseek-ai/dsh@0.1.1-rc.2',
+  testedWith: '@deepseek-ai/dsh@0.2.2-rc.1',
   themes,
 };
 
@@ -213,7 +213,7 @@ await writeFile(join(releaseDir, 'INSTALL-THEMES.md'), guide, 'utf8');
 
 const notes = `# dsh-WutheringWaves ${collection.tag}
 
-已针对 \`@deepseek-ai/dsh@0.1.1-rc.2\` 验证。主题包保持 \`private: true\`，不发布 npm registry；安装使用本 Release 中的 \`.tgz\`。
+已针对 \`@deepseek-ai/dsh@0.2.2-rc.1\` 验证。主题包保持 \`private: true\`，不发布 npm registry；安装使用本 Release 中的 \`.tgz\`。
 
 ## 变化
 

@@ -6,7 +6,7 @@
   <img alt="主题数量" src="https://img.shields.io/badge/themes-6-7c3aed" />
   <img alt="集合版本" src="https://img.shields.io/github/v/release/frank6892103/dsh-WutheringWaves?label=release" />
   <img alt="代码许可" src="https://img.shields.io/badge/code%20license-MIT-1d4ed8" />
-  <img alt="DSH 版本" src="https://img.shields.io/badge/DSH-0.1.1--rc.2-059669" />
+  <img alt="DSH 版本" src="https://img.shields.io/badge/DSH-0.2.2--rc.1-059669" />
   <img alt="默认性能" src="https://img.shields.io/badge/performance-economy%20by%20default-0ea5e9" />
 </p>
 
@@ -55,7 +55,7 @@
 
 ## 安装
 
-需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.1.1-rc.2` 上验证。主题包不发布到 npm；可安装产物在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)，按集合版本号（如 `v0.6.0`）浏览。
+需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.2.2-rc.1` 上验证。主题包不发布到 npm；可安装产物在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)，按集合版本号（如 `v0.6.0`）浏览。
 
 `dsh plugin` 会把参数交给 pnpm。同一 `.tgz` 也可用 `pnpm add` 或 `npm install` 从远端 URL 或本地文件安装；若目标是 DSH GUI，请使用 `dsh plugin`。
 

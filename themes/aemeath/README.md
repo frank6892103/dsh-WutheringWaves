@@ -58,6 +58,6 @@ dsh plugin --profile web remove @dsh-external/dsh-client-ui-skin-wuthering-aemea
 
 ## 兼容范围
 
-- 已针对 `@deepseek-ai/dsh@0.1.1-rc.2` 验证。
+- 已针对 `@deepseek-ai/dsh@0.2.2-rc.1` 验证。
 - Cordis peer 范围：`@deepseek-ai/cordis@^4.0.1`。
 - DSH 仍处于开发者预览期；升级 DSH 后应重新运行构建、校验与隔离安装测试。
