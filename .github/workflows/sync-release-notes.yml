@@ -1,0 +1,33 @@
+name: Sync GitHub Release notes
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - release/RELEASE-NOTES.md
+      - release/theme-release.json
+      - .github/workflows/sync-release-notes.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update the current collection release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          TAG="v${VERSION}"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release ${TAG} does not exist yet; skip."
+            exit 0
+          fi
+          gh release edit "$TAG" --notes-file release/RELEASE-NOTES.md
+          gh release upload "$TAG" release/theme-release.json --clobber
