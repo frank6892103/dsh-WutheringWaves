@@ -17,7 +17,7 @@ const hostModule = await import(`${pathToFileURL(join(themeRoot, 'lib/index.js')
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.3.0');
+assert.equal(packageJson.version, '0.3.1');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');

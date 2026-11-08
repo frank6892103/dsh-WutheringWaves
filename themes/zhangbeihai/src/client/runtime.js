@@ -190,7 +190,10 @@ function mountZhangbeihaiTheme() {
   bearing.append(bearingMark, bearingCopy);
 
   body.prepend(scene);
-  body.append(portraitFrame, trisolaris, dossier, bearing);
+  body.append(portraitFrame, trisolaris, bearing);
+  const themeHub = document.querySelector('.dsh-theme-hub');
+  if (themeHub) themeHub.prepend(dossier);
+  else body.append(dossier);
   body.setAttribute(ZHANGBEIHAI_BODY_ATTR, '');
   document.title = '三体 · 章北海 | DeepSeek Harness';
 

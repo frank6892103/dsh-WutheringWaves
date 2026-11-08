@@ -10,7 +10,7 @@
   <img alt="默认性能" src="https://img.shields.io/badge/performance-economy%20by%20default-0ea5e9" />
 </p>
 
-每个主题都是独立的 DSH 客户端皮肤插件：可同时安装，页面右下角「主题中心」互斥切换，随时恢复官方外观。角色主题与 DSH 自带的浅色 / 深色设置相互独立。
+每个主题都是独立的 DSH 客户端皮肤插件：可同时安装，由「主题中心」互斥切换，随时恢复官方外观。主题中心默认在页面右下角，可以拖到其他位置。角色主题与 DSH 自带的浅色 / 深色设置相互独立。
 
 > 非官方、非商业的同人主题，与库洛游戏、米哈游 / HoYoverse、《三体》权利方及 DeepSeek 均无隶属或合作关系。原创代码使用 MIT 许可；角色与美术素材不在 MIT 范围内，详见 [许可与素材](#许可与素材)。
 
@@ -46,16 +46,16 @@
 
 | 主题 | 版本 | 视觉意象 | 包名 |
 | --- | --- | --- | --- |
-| [鸣潮 · 爱弥斯](themes/aemeath) | 0.3.1 | 星海蓝、樱粉与暖金长航 | `@dsh-external/dsh-client-ui-skin-wuthering-aemeath` |
-| [鸣潮 · 坎特蕾拉](themes/cantarella) | 0.3.1 | 深海幻梦、水母与紫蓝潮汐 | `@dsh-external/dsh-client-ui-skin-wuthering-cantarella` |
-| [鸣潮 · 心月狐](themes/xinyuehu) | 0.3.0 | 玄方月苑、月门屏风与机关分形 | `@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu` |
-| [鸣潮 · 清宵](themes/qingxiao) | 0.1.0 | 梦州云海、琴弦心剑与青玉冷光 | `@dsh-external/dsh-client-ui-skin-wuthering-qingxiao` |
-| [三体 · 章北海](themes/zhangbeihai) | 0.3.3 | 舰桥晨光、三恒星轨道与舰队航向 | `@dsh-external/dsh-client-ui-skin-threebody-zhangbeihai` |
-| [原神 · 若娜瓦](themes/ronova) | 0.2.2 | 赤月终焉、六翼神瞳与死生律令 | `@dsh-external/dsh-client-ui-skin-genshin-ronova` |
+| [鸣潮 · 爱弥斯](themes/aemeath) | 0.3.2 | 星海蓝、樱粉与暖金长航 | `@dsh-external/dsh-client-ui-skin-wuthering-aemeath` |
+| [鸣潮 · 坎特蕾拉](themes/cantarella) | 0.3.2 | 深海幻梦、水母与紫蓝潮汐 | `@dsh-external/dsh-client-ui-skin-wuthering-cantarella` |
+| [鸣潮 · 心月狐](themes/xinyuehu) | 0.3.1 | 玄方月苑、月门屏风与机关分形 | `@dsh-external/dsh-client-ui-skin-wuthering-xinyuehu` |
+| [鸣潮 · 清宵](themes/qingxiao) | 0.1.1 | 梦州云海、琴弦心剑与青玉冷光 | `@dsh-external/dsh-client-ui-skin-wuthering-qingxiao` |
+| [三体 · 章北海](themes/zhangbeihai) | 0.3.4 | 舰桥晨光、三恒星轨道与舰队航向 | `@dsh-external/dsh-client-ui-skin-threebody-zhangbeihai` |
+| [原神 · 若娜瓦](themes/ronova) | 0.2.3 | 赤月终焉、六翼神瞳与死生律令 | `@dsh-external/dsh-client-ui-skin-genshin-ronova` |
 
 ## 安装
 
-需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.1.1-rc.2` 上验证。主题包不发布到 npm；可安装产物在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)，按集合版本号（如 `v0.5.0`）浏览。
+需要已安装 DeepSeek Harness CLI，并使用 `web` profile。当前已在 `@deepseek-ai/dsh@0.1.1-rc.2` 上验证。主题包不发布到 npm；可安装产物在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)，按集合版本号（如 `v0.6.0`）浏览。
 
 `dsh plugin` 会把参数交给 pnpm。同一 `.tgz` 也可用 `pnpm add` 或 `npm install` 从远端 URL 或本地文件安装；若目标是 DSH GUI，请使用 `dsh plugin`。
 
@@ -64,12 +64,12 @@
 钉死当前集合版本：
 
 ```powershell
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.4.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
 dsh --profile web --dump-config
 dsh web
 ```
@@ -83,8 +83,8 @@ dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/
 包管理器等价命令（同一 URL）：
 
 ```powershell
-pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
 ```
 
 ### 从本地文件安装
@@ -92,19 +92,19 @@ npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download
 从 [Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases) 下载 `.tgz`，或在克隆的仓库根目录执行 `pnpm run themes:release` 后，在该目录执行：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.0.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.0.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.3.tgz
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-xinyuehu-0.3.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-qingxiao-0.1.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-threebody-zhangbeihai-0.3.4.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
 dsh --profile web --dump-config
 dsh web
 ```
 
 ```powershell
-pnpm add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-npm install ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+pnpm add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+npm install ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
 ```
 
 不必一次装完；只装需要的主题即可。组合配置中应出现对应的 `ui-skin-*` 行。若 Web 服务已在运行，请先停止再启动。
@@ -120,7 +120,7 @@ Get-FileHash -Algorithm SHA256 .\*.tgz
 
 ## 使用
 
-1. 打开 DSH Web 页面，点击右下角 **主题中心**。
+1. 打开 DSH Web 页面，点击 **主题中心**。它默认在右下角；按住按钮或面板标题可以拖到别的位置，刷新后仍留在那里。心月狐、章北海、若娜瓦贴在选择框上的铭牌会一起移动，打开列表时先让开。爱弥斯右上角的「RESONANCE SIGNAL」避开 DSH 功能按钮。
 2. 选择已安装的角色主题，或 **官方外观**。
 3. 需要完整动效时，将「动态效果」从默认的 **省资源** 改为 **完整**。
 
@@ -133,6 +133,7 @@ window.__DSH_WUTHERING_THEME_HUB__.list()
 window.__DSH_WUTHERING_THEME_HUB__.setActive('wuthering-aemeath')
 window.__DSH_WUTHERING_THEME_HUB__.setActive('official')
 window.__DSH_WUTHERING_THEME_HUB__.setPerformance('economy') // 或 'full'
+window.__DSH_WUTHERING_THEME_HUB__.getPosition() // 未拖动过为 null
 ```
 
 ## 卸载

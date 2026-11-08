@@ -164,7 +164,10 @@ function mountRonovaTheme() {
   edictHud.append(edictSeal, edictCopy);
 
   body.prepend(scene);
-  body.append(brand, hud, edictHud);
+  body.append(brand, hud);
+  const themeHub = document.querySelector('.dsh-theme-hub');
+  if (themeHub) themeHub.prepend(edictHud);
+  else body.append(edictHud);
   if (foreground) body.append(foreground);
   body.setAttribute(RONOVA_BODY_ATTR, '');
   document.title = '原神 · 若娜瓦 | DeepSeek Harness';

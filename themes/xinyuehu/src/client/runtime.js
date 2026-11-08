@@ -147,7 +147,10 @@ function mountXinyuehuTheme() {
   hudBottomCopy.append(hudBottomLabel, hudBottomValue, hudBottomMeta);
   hudBottom.append(hudBottomMark, hudBottomCopy);
 
-  body.append(hudTop, hudBottom);
+  body.append(hudTop);
+  const themeHub = document.querySelector('.dsh-theme-hub');
+  if (themeHub) themeHub.prepend(hudBottom);
+  else body.append(hudBottom);
   body.setAttribute(XINYUEHU_BODY_ATTR, '');
   document.title = '鸣潮 · 心月狐 | DeepSeek Harness';
 

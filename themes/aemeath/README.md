@@ -15,7 +15,7 @@ DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 
 ## 多主题切换
 
-安装后，本主题会向页面右下角的“主题中心”注册，不再自动覆盖官方外观。多个角色主题可同时安装，但任一时刻只会挂载一个。选择会保存在浏览器 `localStorage`，且可以通过 `window.__DSH_WUTHERING_THEME_HUB__.setActive('wuthering-aemeath')` 程序化切换。
+安装后，本主题会向“主题中心”注册，不再自动覆盖官方外观。主题中心默认在右下角，可以拖到其他位置。右上角「RESONANCE SIGNAL」避开 DSH 功能按钮。多个角色主题可同时安装，但任一时刻只会挂载一个。选择会保存在浏览器 `localStorage`，且可以通过 `window.__DSH_WUTHERING_THEME_HUB__.setActive('wuthering-aemeath')` 程序化切换。
 
 该主题只通过 `data-dsh-skin-aemeath` 作用域生效。切回官方外观、换用其他主题，或 DSH 停用/移除插件时，清理器会撤回主题节点、样式、标题和浏览器主题色。
 
@@ -33,15 +33,15 @@ node scripts/verify.mjs
 正式包按集合版本发布在 [GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)。远端：
 
 ```powershell
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
-npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
 ```
 
 发布者在仓库根目录执行 `pnpm run theme:aemeath:release` 或 `pnpm run themes:release` 后，也可本地安装：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-aemeath-0.3.2.tgz
 dsh --profile web --dump-config
 dsh web
 ```

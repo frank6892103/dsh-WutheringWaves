@@ -20,7 +20,7 @@ const hostModule = await import(hostModuleUrl);
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-wuthering-aemeath';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.3.1');
+assert.equal(packageJson.version, '0.3.2');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');

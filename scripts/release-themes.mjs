@@ -135,7 +135,7 @@ const themeTable = themes
 
 const guide = `# 角色多主题 DSH 安装
 
-六个主题包可以同时安装。安装并重启 DSH 后，从页面右下角“主题中心”选择“爱弥斯”“坎特蕾拉”“心月狐”“清宵”“章北海”“若娜瓦”或“官方外观”。
+六个主题包可以同时安装。安装并重启 DSH 后，从“主题中心”选择“爱弥斯”“坎特蕾拉”“心月狐”“清宵”“章北海”“若娜瓦”或“官方外观”。主题中心默认在页面右下角，按住按钮或标题可拖到其他位置，刷新后仍留在那里。心月狐、章北海、若娜瓦贴在选择框上的铭牌会一起移动，打开列表时先让开。爱弥斯右上角的“RESONANCE SIGNAL”避开 DSH 功能按钮。
 
 集合版本 \`${collection.version}\` 对应 GitHub Release [\`${collection.tag}\`](${manifest.releaseUrl})。浏览全部版本：${manifest.latestReleaseUrl.replace(/\/latest$/, '')}
 
@@ -214,6 +214,12 @@ await writeFile(join(releaseDir, 'INSTALL-THEMES.md'), guide, 'utf8');
 const notes = `# dsh-WutheringWaves ${collection.tag}
 
 已针对 \`@deepseek-ai/dsh@0.1.1-rc.2\` 验证。主题包保持 \`private: true\`，不发布 npm registry；安装使用本 Release 中的 \`.tgz\`。
+
+## 变化
+
+- 主题中心可以拖动。默认仍在右下角；松手后把位置记在 \`dsh.wuthering-waves.theme-hub-position.v1\`，刷新后恢复。
+- 心月狐、章北海、若娜瓦贴在选择框上的铭牌随选择框移动。打开主题列表时铭牌先隐藏，避免挡住选项。
+- 爱弥斯右上角「RESONANCE SIGNAL」向左让开，不再盖住 DSH 功能按钮。
 
 ## 主题包
 

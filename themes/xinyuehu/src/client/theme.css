@@ -846,6 +846,25 @@ body[data-dsh-skin-xinyuehu] .dsh-theme-hub__panel {
   max-height: min(626px, calc(100vh - 96px));
 }
 
+/* The lower plaque is part of the selector, so it travels with the dragged button. */
+body[data-dsh-skin-xinyuehu] .dsh-theme-hub > .xinyuehu-theme__hud--bottom {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: calc(100% + 14px);
+  left: auto;
+  width: 100%;
+}
+
+body[data-dsh-skin-xinyuehu] .dsh-theme-hub--panel-below > .xinyuehu-theme__hud--bottom {
+  top: calc(100% + 14px);
+  bottom: auto;
+}
+
+body[data-dsh-skin-xinyuehu] .dsh-theme-hub--open > .xinyuehu-theme__hud--bottom {
+  visibility: hidden;
+}
+
 html[data-dsh-wuthering-performance='full'] .xinyuehu-theme__gate-ring {
   animation: xinyuehu-gate-turn 18s linear infinite;
 }
@@ -975,7 +994,6 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-xinyuehu]:has(#ro
   .xinyuehu-theme__folding-screen { right: -16%; width: 64vw; opacity: .68; }
   .xinyuehu-theme__portrait-frame { right: -20vw; width: 76vw; opacity: .9; }
   .xinyuehu-theme__hud--top { display: none; }
-  .xinyuehu-theme__hud--bottom { right: 14px; bottom: 88px; }
   .xinyuehu-theme__lanterns { right: 16%; left: 40%; }
   body[data-dsh-skin-xinyuehu] .dsh-theme-hub { right: 14px; bottom: 14px; }
 }

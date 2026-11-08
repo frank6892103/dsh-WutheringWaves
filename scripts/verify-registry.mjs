@@ -20,6 +20,7 @@ assert.deepEqual(registry.selector.performanceModes, ['economy', 'full']);
 assert.equal(registry.selector.previewLoading, 'on-selector-open');
 assert.match(hubRuntime, new RegExp(registry.selector.storageKey.replaceAll('.', '\\.')));
 assert.match(hubRuntime, new RegExp(registry.selector.performanceStorageKey.replaceAll('.', '\\.')));
+assert.match(hubRuntime, new RegExp(registry.selector.positionStorageKey.replaceAll('.', '\\.')));
 assert.ok(hubRuntime.includes(registry.selector.globalApi));
 assert.ok(hubRuntime.includes('previousTheme.mount()'), 'switch failures must remount the previous theme');
 assert.ok(hubRuntime.includes('activeCleanup();'), 'switches must dispose the active theme');

@@ -18,7 +18,7 @@ const hostModule = await import(`${pathToFileURL(join(themeRoot, 'lib/index.js')
 
 const expectedPackage = '@dsh-external/dsh-client-ui-skin-genshin-ronova';
 assert.equal(packageJson.name, expectedPackage);
-assert.equal(packageJson.version, '0.2.2');
+assert.equal(packageJson.version, '0.2.3');
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.license, 'MIT');
 assert.equal(packageJson.exports['./client'], './lib/client.js');

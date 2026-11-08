@@ -8,7 +8,7 @@
     "schemaVersion": { "const": 3 },
     "selector": {
       "type": "object",
-      "required": ["officialThemeId", "storageKey", "persistence", "globalApi", "activation", "performanceStorageKey", "defaultPerformance", "performanceModes", "previewLoading"],
+      "required": ["officialThemeId", "storageKey", "persistence", "globalApi", "activation", "performanceStorageKey", "positionStorageKey", "defaultPerformance", "performanceModes", "previewLoading"],
       "properties": {
         "officialThemeId": { "const": "official" },
         "storageKey": { "type": "string", "minLength": 1 },
@@ -16,6 +16,7 @@
         "globalApi": { "type": "string", "pattern": "^__[A-Z0-9_]+__$" },
         "activation": { "const": "exclusive" },
         "performanceStorageKey": { "type": "string", "minLength": 1 },
+        "positionStorageKey": { "type": "string", "minLength": 1 },
         "defaultPerformance": { "const": "economy" },
         "performanceModes": {
           "type": "array",

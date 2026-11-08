@@ -1,6 +1,6 @@
 {
   "name": "@dsh-external/dsh-client-ui-skin-genshin-ronova",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "description": "A switchable Ronova theme for DeepSeek Harness Web GUI",
   "keywords": [

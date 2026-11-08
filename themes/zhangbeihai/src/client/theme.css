@@ -904,6 +904,26 @@ body[data-dsh-skin-zhangbeihai] .dsh-theme-hub__panel {
   max-height: calc(100vh - 24px);
 }
 
+/* The dossier shares the selector rail and moves with it. */
+body[data-dsh-skin-zhangbeihai] .dsh-theme-hub > .zhangbeihai-theme__dossier {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: calc(100% + 8px);
+  left: auto;
+  width: 100%;
+  transform: none;
+}
+
+body[data-dsh-skin-zhangbeihai] .dsh-theme-hub--panel-below > .zhangbeihai-theme__dossier {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+body[data-dsh-skin-zhangbeihai] .dsh-theme-hub--open > .zhangbeihai-theme__dossier {
+  visibility: hidden;
+}
+
 .zhangbeihai-theme__bearing {
   position: fixed;
   z-index: 4;
@@ -1171,14 +1191,12 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-zhangbeihai] .dsh
 @media (min-width: 1500px) {
   .zhangbeihai-theme__portrait-frame { right: -8px; }
   .zhangbeihai-theme__trisolaris { top: 82px; right: 24px; }
-  .zhangbeihai-theme__dossier { right: 24px; bottom: 82px; }
   body[data-dsh-skin-zhangbeihai] .dsh-theme-hub { right: 24px; bottom: 22px; }
 }
 
 @media (max-width: 1099px) {
   .zhangbeihai-theme__portrait-frame { right: -92px; width: 470px; opacity: .84; }
   .zhangbeihai-theme__trisolaris { right: 132px; top: 7px; width: min(282px, calc(100vw - 350px)); }
-  .zhangbeihai-theme__dossier { right: 14px; bottom: 204px; width: 282px; transform: scale(.9); transform-origin: right bottom; }
   body[data-dsh-skin-zhangbeihai] .dsh-theme-hub { right: 14px; bottom: 142px; }
   body[data-dsh-skin-zhangbeihai] .dsh-theme-hub__trigger { width: 282px; min-width: 282px; }
 }
@@ -1188,7 +1206,6 @@ html[data-dsh-wuthering-performance='full'] body[data-dsh-skin-zhangbeihai] .dsh
   .zhangbeihai-theme__portrait-frame { right: -126px; width: 440px; opacity: .76; }
   .zhangbeihai-theme__trisolaris { right: 132px; width: min(242px, calc(100vw - 350px)); opacity: .9; }
   .zhangbeihai-theme__bearing { left: 24px; }
-  .zhangbeihai-theme__dossier { right: 12px; bottom: 202px; width: 282px; transform: scale(.82); transform-origin: right bottom; }
 }
 
 @media (max-width: 560px) {

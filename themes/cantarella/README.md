@@ -16,7 +16,7 @@ DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 
 ## 切换
 
-安装后主题会出现在右下角“主题中心”。它可与爱弥斯主题同时安装，但与官方外观之间始终互斥挂载。也可以程序化切换：
+安装后主题会出现在“主题中心”（默认右下角，可拖动）。它可与爱弥斯主题同时安装，但与官方外观之间始终互斥挂载。也可以程序化切换：
 
 ```js
 window.__DSH_WUTHERING_THEME_HUB__.setActive('wuthering-cantarella')
@@ -34,15 +34,15 @@ node scripts/verify.mjs
 远端（[GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)）：
 
 ```powershell
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
-pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
-npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
 ```
 
 本地 `.tgz`（下载 Release 或执行 `pnpm run themes:release`）：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.1.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-wuthering-cantarella-0.3.2.tgz
 dsh --profile web --dump-config
 dsh web
 ```

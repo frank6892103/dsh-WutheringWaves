@@ -1,6 +1,6 @@
 # spec010：GitHub Release 发布
 
-> 状态：仓库已按集合版本 GitHub Release 改造；`v0.5.0` 由推送标签后的 Actions 创建
+> 状态：仓库已按集合版本 GitHub Release 改造；`v0.5.0` 起由推送标签后的 Actions 创建，当前集合版本见根 `package.json`（`v0.6.0` 起包含可拖动主题中心）
 > 日期：2026-08-30
 > 仓库：`frank6892103/dsh-WutheringWaves`
 > 集合版本：根 `package.json` 的 `0.5.0`，对应 Git 标签与 Release `v0.5.0`

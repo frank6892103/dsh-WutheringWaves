@@ -424,8 +424,8 @@ html[data-dsh-wuthering-performance='full'] .aemeath-theme__hud::before {
 }
 
 .aemeath-theme__hud-top {
-  top: 22px;
-  right: 24px;
+  top: 7px;
+  right: 148px;
   flex-direction: column;
   align-items: flex-end;
 }
@@ -724,11 +724,10 @@ body[data-dsh-skin-aemeath] ::selection {
   }
 
   .aemeath-theme__hud-top {
-    top: 9px;
-    right: 9px;
+    top: 7px;
+    right: 132px;
     display: flex;
-    transform: scale(0.74);
-    transform-origin: top right;
+    transform: none;
   }
 
   .aemeath-theme__orbit {
@@ -766,7 +765,8 @@ body[data-dsh-skin-aemeath] ::selection {
     opacity: 0.62;
   }
 
-  .aemeath-theme__brand {
+  .aemeath-theme__brand,
+  .aemeath-theme__hud-top {
     display: none;
   }
 }

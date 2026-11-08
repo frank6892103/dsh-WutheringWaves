@@ -774,6 +774,25 @@ body[data-dsh-skin-ronova] .dsh-theme-hub__trigger[aria-expanded='true'] {
   transform: translateY(-1px);
 }
 
+/* The edict plaque is the selector's upper half and moves with the button. */
+body[data-dsh-skin-ronova] .dsh-theme-hub > .ronova-theme__edict-hud {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: calc(100% + 14px);
+  left: auto;
+  width: 100%;
+}
+
+body[data-dsh-skin-ronova] .dsh-theme-hub--panel-below > .ronova-theme__edict-hud {
+  top: calc(100% + 14px);
+  bottom: auto;
+}
+
+body[data-dsh-skin-ronova] .dsh-theme-hub--open > .ronova-theme__edict-hud {
+  visibility: hidden;
+}
+
 body[data-dsh-skin-ronova] .dsh-theme-hub__panel {
   position: fixed;
   top: 72px;
@@ -990,7 +1009,6 @@ html[data-dsh-wuthering-performance='full'] .ronova-theme__edict-seal { animatio
 @media (min-width: 1500px) {
   .ronova-theme__portrait-stage { top: -7%; height: 114%; }
   .ronova-theme__hud { top: 82px; right: 24px; }
-  .ronova-theme__edict-hud { right: 24px; bottom: 91px; }
   body[data-dsh-skin-ronova] .dsh-theme-hub { right: 24px; bottom: 22px; }
 }
 
@@ -1006,7 +1024,6 @@ html[data-dsh-wuthering-performance='full'] .ronova-theme__edict-seal { animatio
   .ronova-theme__portrait-stage { right: -16vw; width: min(720px, 74vw); opacity: .9; }
   .ronova-theme__eclipse { right: -8vw; opacity: .46; }
   .ronova-theme__brand { left: 16px; bottom: 18px; opacity: .62; }
-  .ronova-theme__edict-hud { right: 14px; bottom: 84px; }
   body[data-dsh-skin-ronova] .dsh-theme-hub { right: 14px; bottom: 14px; }
   body[data-dsh-skin-ronova] .dsh-theme-hub__panel { top: 64px; right: 14px; max-height: calc(100vh - 82px); }
 }

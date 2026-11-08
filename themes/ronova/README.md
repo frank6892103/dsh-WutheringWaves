@@ -15,7 +15,7 @@ DeepSeek Harness Web GUI 的可切换客户端皮肤包。
 
 ## 切换
 
-安装后主题会出现在右下角“主题中心”。它可与仓库内其他主题同时安装，但任意时刻最多只有一个主题挂载：
+安装后主题会出现在“主题中心”（默认右下角，可拖动）。贴在选择框上的律令铭牌会一起移动，打开列表时先让开。它可与仓库内其他主题同时安装，但任意时刻最多只有一个主题挂载：
 
 ```js
 window.__DSH_WUTHERING_THEME_HUB__.setActive('genshin-ronova')
@@ -33,15 +33,15 @@ node scripts/verify.mjs
 远端（[GitHub Releases](https://github.com/frank6892103/dsh-WutheringWaves/releases)）：
 
 ```powershell
-dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
-pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
-npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.5.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
+dsh plugin --profile web add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
+pnpm add https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
+npm install https://github.com/frank6892103/dsh-WutheringWaves/releases/download/v0.6.0/dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
 ```
 
 本地 `.tgz`（下载 Release 或执行 `pnpm run themes:release`）：
 
 ```powershell
-dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.2.tgz
+dsh plugin --profile web add ./dsh-external-dsh-client-ui-skin-genshin-ronova-0.2.3.tgz
 dsh --profile web --dump-config
 dsh web
 
